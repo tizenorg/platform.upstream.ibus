@@ -1,0 +1,165 @@
+<!-- ##### SECTION Title ##### -->
+ibustypes
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### ENUM IBusModifierType ##### -->
+<para>
+
+</para>
+
+@IBUS_SHIFT_MASK: 
+@IBUS_LOCK_MASK: 
+@IBUS_CONTROL_MASK: 
+@IBUS_MOD1_MASK: 
+@IBUS_MOD2_MASK: 
+@IBUS_MOD3_MASK: 
+@IBUS_MOD4_MASK: 
+@IBUS_MOD5_MASK: 
+@IBUS_BUTTON1_MASK: 
+@IBUS_BUTTON2_MASK: 
+@IBUS_BUTTON3_MASK: 
+@IBUS_BUTTON4_MASK: 
+@IBUS_BUTTON5_MASK: 
+@IBUS_HANDLED_MASK: 
+@IBUS_FORWARD_MASK: 
+@IBUS_IGNORED_MASK: 
+@IBUS_SUPER_MASK: 
+@IBUS_HYPER_MASK: 
+@IBUS_META_MASK: 
+@IBUS_RELEASE_MASK: 
+@IBUS_MODIFIER_MASK: 
+
+<!-- ##### ENUM IBusCapabilite ##### -->
+<para>
+
+</para>
+
+@IBUS_CAP_PREEDIT_TEXT: 
+@IBUS_CAP_AUXILIARY_TEXT: 
+@IBUS_CAP_LOOKUP_TABLE: 
+@IBUS_CAP_FOCUS: 
+@IBUS_CAP_PROPERTY: 
+@IBUS_CAP_SURROUNDING_TEXT: 
+
+<!-- ##### ENUM IBusPreeditFocusMode ##### -->
+<para>
+
+</para>
+
+@IBUS_ENGINE_PREEDIT_CLEAR: 
+@IBUS_ENGINE_PREEDIT_COMMIT: 
+
+<!-- ##### ENUM IBusOrientation ##### -->
+<para>
+
+</para>
+
+@IBUS_ORIENTATION_HORIZONTAL: 
+@IBUS_ORIENTATION_VERTICAL: 
+@IBUS_ORIENTATION_SYSTEM: 
+
+<!-- ##### ENUM IBusBusNameFlag ##### -->
+<para>
+
+</para>
+
+@IBUS_BUS_NAME_FLAG_ALLOW_REPLACEMENT: 
+@IBUS_BUS_NAME_FLAG_REPLACE_EXISTING: 
+@IBUS_BUS_NAME_FLAG_DO_NOT_QUEUE: 
+
+<!-- ##### ENUM IBusBusRequestNameReply ##### -->
+<para>
+
+</para>
+
+@IBUS_BUS_REQUEST_NAME_REPLY_PRIMARY_OWNER: 
+@IBUS_BUS_REQUEST_NAME_REPLY_IN_QUEUE: 
+@IBUS_BUS_REQUEST_NAME_REPLY_EXISTS: 
+@IBUS_BUS_REQUEST_NAME_REPLY_ALREADY_OWNER: 
+
+<!-- ##### ENUM IBusBusStartServiceByNameReply ##### -->
+<para>
+
+</para>
+
+@IBUS_BUS_START_REPLY_SUCCESS: 
+@IBUS_BUS_START_REPLY_ALREADY_RUNNING: 
+
+<!-- ##### ENUM IBusError ##### -->
+<para>
+
+</para>
+
+@IBUS_ERROR_NO_ENGINE: 
+@IBUS_ERROR_NO_CONFIG: 
+@IBUS_ERROR_FAILED: 
+
+<!-- ##### STRUCT IBusRectangle ##### -->
+<para>
+
+</para>
+
+@x: 
+@y: 
+@width: 
+@height: 
+
+<!-- ##### USER_FUNCTION IBusFreeFunc ##### -->
+<para>
+
+</para>
+
+@object: 
+
+
+<!-- ##### ENUM IBusInputPurpose ##### -->
+<para>
+
+</para>
+
+@IBUS_INPUT_PURPOSE_FREE_FORM: 
+@IBUS_INPUT_PURPOSE_ALPHA: 
+@IBUS_INPUT_PURPOSE_DIGITS: 
+@IBUS_INPUT_PURPOSE_NUMBER: 
+@IBUS_INPUT_PURPOSE_PHONE: 
+@IBUS_INPUT_PURPOSE_URL: 
+@IBUS_INPUT_PURPOSE_EMAIL: 
+@IBUS_INPUT_PURPOSE_NAME: 
+@IBUS_INPUT_PURPOSE_PASSWORD: 
+@IBUS_INPUT_PURPOSE_PIN: 
+
+<!-- ##### ENUM IBusInputHints ##### -->
+<para>
+
+</para>
+
+@IBUS_INPUT_HINT_NONE: 
+@IBUS_INPUT_HINT_SPELLCHECK: 
+@IBUS_INPUT_HINT_NO_SPELLCHECK: 
+@IBUS_INPUT_HINT_WORD_COMPLETION: 
+@IBUS_INPUT_HINT_LOWERCASE: 
+@IBUS_INPUT_HINT_UPPERCASE_CHARS: 
+@IBUS_INPUT_HINT_UPPERCASE_WORDS: 
+@IBUS_INPUT_HINT_UPPERCASE_SENTENCES: 
+@IBUS_INPUT_HINT_INHIBIT_OSK: 
+

@@ -1,0 +1,1666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusInputContext</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch03.html" title="Input method engine">
+<link rel="prev" href="IBusFactory.html" title="IBusFactory">
+<link rel="next" href="ibus-ibuskeys.html" title="ibuskeys">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusFactory.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-ibuskeys.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusInputContext.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusInputContext.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusInputContext.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusInputContext.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#IBusInputContext.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusInputContext"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusInputContext.top_of_page"></a>IBusInputContext</span></h2>
+<p>IBusInputContext — IBus input context proxy object.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="IBusInputContext.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<a name="IBusInputContext.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="IBusInputContext.html#IBusInputContext-struct" title="struct IBusInputContext">IBusInputContext</a>;
+struct              <a class="link" href="IBusInputContext.html#IBusInputContextClass" title="struct IBusInputContextClass">IBusInputContextClass</a>;
+<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusInputContext.html#ibus-input-context-new" title="ibus_input_context_new ()">ibus_input_context_new</a>              (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-new-async" title="ibus_input_context_new_async ()">ibus_input_context_new_async</a>        (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusInputContext.html#ibus-input-context-new-async-finish" title="ibus_input_context_new_async_finish ()">ibus_input_context_new_async_finish</a> (<em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context" title="ibus_input_context_get_input_context ()">ibus_input_context_get_input_context</a>
+                                                        (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context-async" title="ibus_input_context_get_input_context_async ()">ibus_input_context_get_input_context_async</a>
+                                                        (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context-async-finish" title="ibus_input_context_get_input_context_async_finish ()">ibus_input_context_get_input_context_async_finish</a>
+                                                        (<em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-process-hand-writing-event" title="ibus_input_context_process_hand_writing_event ()">ibus_input_context_process_hand_writing_event</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gdouble</span> *coordinates</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> coordinates_len</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-cancel-hand-writing" title="ibus_input_context_cancel_hand_writing ()">ibus_input_context_cancel_hand_writing</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> n_strokes</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()">ibus_input_context_process_key_event_async</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keyval</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keycode</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> state</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async-finish" title="ibus_input_context_process_key_event_async_finish ()">ibus_input_context_process_key_event_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event" title="ibus_input_context_process_key_event ()">ibus_input_context_process_key_event</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keyval</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keycode</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> state</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-set-cursor-location" title="ibus_input_context_set_cursor_location ()">ibus_input_context_set_cursor_location</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> x</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> y</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> w</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> h</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-set-capabilities" title="ibus_input_context_set_capabilities ()">ibus_input_context_set_capabilities</a> (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> capabilities</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-property-activate" title="ibus_input_context_property_activate ()">ibus_input_context_property_activate</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *prop_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> state</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-focus-in" title="ibus_input_context_focus_in ()">ibus_input_context_focus_in</a>         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-focus-out" title="ibus_input_context_focus_out ()">ibus_input_context_focus_out</a>        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-reset" title="ibus_input_context_reset ()">ibus_input_context_reset</a>            (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async" title="ibus_input_context_get_engine_async ()">ibus_input_context_get_engine_async</a> (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    <a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async-finish" title="ibus_input_context_get_engine_async_finish ()">ibus_input_context_get_engine_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    <a class="link" href="IBusInputContext.html#ibus-input-context-get-engine" title="ibus_input_context_get_engine ()">ibus_input_context_get_engine</a>       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-set-engine" title="ibus_input_context_set_engine ()">ibus_input_context_set_engine</a>       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-set-surrounding-text" title="ibus_input_context_set_surrounding_text ()">ibus_input_context_set_surrounding_text</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> cursor_pos</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> anchor_pos</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusInputContext.html#ibus-input-context-needs-surrounding-text" title="ibus_input_context_needs_surrounding_text ()">ibus_input_context_needs_surrounding_text</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusInputContext.html#ibus-input-context-set-content-type" title="ibus_input_context_set_content_type ()">ibus_input_context_set_content_type</a> (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> purpose</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> hints</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusInputContext.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GDBusProxy
+         +----<a class="link" href="IBusProxy.html" title="IBusProxy">IBusProxy</a>
+               +----IBusInputContext
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusInputContext.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+IBusInputContext implements
+ GDBusInterface,  GInitable and  GAsyncInitable.</p>
+</div>
+<div class="refsect1">
+<a name="IBusInputContext.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-commit-text" title='The "commit-text" signal'>commit-text</a>"                                    : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-cursor-down-lookup-table" title='The "cursor-down-lookup-table" signal'>cursor-down-lookup-table</a>"                       : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-cursor-up-lookup-table" title='The "cursor-up-lookup-table" signal'>cursor-up-lookup-table</a>"                         : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-delete-surrounding-text" title='The "delete-surrounding-text" signal'>delete-surrounding-text</a>"                        : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-disabled" title='The "disabled" signal'>disabled</a>"                                       : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-enabled" title='The "enabled" signal'>enabled</a>"                                        : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-forward-key-event" title='The "forward-key-event" signal'>forward-key-event</a>"                              : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-auxiliary-text" title='The "hide-auxiliary-text" signal'>hide-auxiliary-text</a>"                            : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-lookup-table" title='The "hide-lookup-table" signal'>hide-lookup-table</a>"                              : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-hide-preedit-text" title='The "hide-preedit-text" signal'>hide-preedit-text</a>"                              : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-page-down-lookup-table" title='The "page-down-lookup-table" signal'>page-down-lookup-table</a>"                         : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-page-up-lookup-table" title='The "page-up-lookup-table" signal'>page-up-lookup-table</a>"                           : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-register-properties" title='The "register-properties" signal'>register-properties</a>"                            : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-auxiliary-text" title='The "show-auxiliary-text" signal'>show-auxiliary-text</a>"                            : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-lookup-table" title='The "show-lookup-table" signal'>show-lookup-table</a>"                              : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-show-preedit-text" title='The "show-preedit-text" signal'>show-preedit-text</a>"                              : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-auxiliary-text" title='The "update-auxiliary-text" signal'>update-auxiliary-text</a>"                          : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-lookup-table" title='The "update-lookup-table" signal'>update-lookup-table</a>"                            : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-preedit-text" title='The "update-preedit-text" signal'>update-preedit-text</a>"                            : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusInputContext.html#IBusInputContext-update-property" title='The "update-property" signal'>update-property</a>"                                : <code class="literal">Run Last</code>
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusInputContext.description"></a><h2>Description</h2>
+<p>
+An IBusInputContext is a proxy object of BusInputContext,
+which manages the context for input methods that supports
+text input in various natural languages.
+</p>
+<p>
+Clients call the IBusInputContext to invoke BusInputContext,
+through which invokes IBusEngine.
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusInputContext.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusInputContext-struct"></a><h3>struct IBusInputContext</h3>
+<pre class="programlisting">struct IBusInputContext;</pre>
+<p>
+An opaque data type representing an IBusInputContext.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContextClass"></a><h3>struct IBusInputContextClass</h3>
+<pre class="programlisting">struct IBusInputContextClass {
+    IBusProxyClass parent;
+    /* signals */
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-new"></a><h3>ibus_input_context_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_new              (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+New an IBusInputContext.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>The path to the object that emitting the signal.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An <span class="type">GDBusConnection</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusInputContext.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-new-async"></a><h3>ibus_input_context_new_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_new_async        (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+New an <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>The path to the object that emitting the signal.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An <span class="type">GDBusConnection</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied.
+The callback should not be <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-new-async-finish"></a><h3>ibus_input_context_new_async_finish ()</h3>
+<pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_new_async_finish (<em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusInputContext.html#ibus-input-context-new-async" title="ibus_input_context_new_async ()"><code class="function">ibus_input_context_new_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> pass to
+<a class="link" href="IBusInputContext.html#ibus-input-context-new-async" title="ibus_input_context_new_async ()"><code class="function">ibus_input_context_new_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-get-input-context"></a><h3>ibus_input_context_get_input_context ()</h3>
+<pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_get_input_context
+                                                        (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>);</pre>
+<p>
+Gets an existing IBusInputContext.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>The path to the object that emitting the signal.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An <span class="type">GDBusConnection</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An existing <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-get-input-context-async"></a><h3>ibus_input_context_get_input_context_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_get_input_context_async
+                                                        (<em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Get an existing <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>path</code></em> :</span></p></td>
+<td>The path to the object that emitting the signal.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An <span class="type">GDBusConnection</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied.
+The callback should not be <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-get-input-context-async-finish"></a><h3>ibus_input_context_get_input_context_async_finish ()</h3>
+<pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_input_context_get_input_context_async_finish
+                                                        (<em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <code class="function">ibus_input_contex_get_input_context_async()</code>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> pass to
+<a class="link" href="IBusInputContext.html#ibus-input-context-get-input-context-async" title="ibus_input_context_get_input_context_async ()"><code class="function">ibus_input_context_get_input_context_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An existing <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-process-hand-writing-event"></a><h3>ibus_input_context_process_hand_writing_event ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_process_hand_writing_event
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gdouble</span> *coordinates</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> coordinates_len</code></em>);</pre>
+<p>
+Pass a handwriting stroke to an input method engine.
+</p>
+<p>
+In this API, a coordinate (0.0, 0.0) represents the top-left corner of an area for
+handwriting, and (1.0, 1.0) does the bottom-right. Therefore, for example, if
+a user writes a character 'L', the array would be something like [0.0, 0.0, 0.0, 1.0, 1.0, 1.0]
+and coordinates_len would be 6.
+</p>
+<p>
+The function is usually called when a user releases the mouse button in a hand
+writing area.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-process-hand-writing-event" title='The "process-hand-writing-event" signal'><span class="type">"process-hand-writing-event"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>coordinates</code></em> :</span></p></td>
+<td>An array of gdouble (0.0 to 1.0) which represents a stroke (i.e. [x1, y1, x2, y2, x3, y3, ...]).</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>coordinates_len</code></em> :</span></p></td>
+<td>The number of elements in the array. The number should be even and &gt;= 4.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-cancel-hand-writing"></a><h3>ibus_input_context_cancel_hand_writing ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_cancel_hand_writing
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> n_strokes</code></em>);</pre>
+<p>
+Clear handwriting stroke(s) in the current input method engine.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-cancel-hand-writing" title='The "cancel-hand-writing" signal'><span class="type">"cancel-hand-writing"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>n_strokes</code></em> :</span></p></td>
+<td>The number of strokes to be removed. Pass 0 to remove all.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-process-key-event-async"></a><h3>ibus_input_context_process_key_event_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_process_key_event_async
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keyval</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keycode</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> state</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Pass the key event to input method engine.
+</p>
+<p>
+Key symbols are characters/symbols produced by key press, for example,
+pressing "s" generates key symbol "s"; pressing shift-"s" generates key symbol "S".
+Same key on keyboard may produce different key symbols on different keyboard layout.
+e.g., "s" key on QWERTY keyboard produces "o" in DVORAK layout.
+</p>
+<p>
+Unlike key symbol, keycode is only determined by the location of the key, and
+irrelevant of the keyboard layout.
+</p>
+<p>
+Briefly speaking, input methods that expect certain keyboard layout should use
+keycode; otherwise keyval is sufficient.
+For example, Chewing, Cangjie, Wubi expect an en-US QWERTY keyboard, these should
+use keycode; while pinyin can rely on keyval only, as it is less sensitive to
+the keyboard layout change, DVORAK users can still use DVORAK layout to input pinyin.
+</p>
+<p>
+Use <a class="link" href="IBusKeymap.html#ibus-keymap-lookup-keysym" title="ibus_keymap_lookup_keysym ()"><code class="function">ibus_keymap_lookup_keysym()</code></a> to convert keycode to keysym in given keyboard layout.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-process-key-event" title='The "process-key-event" signal'><span class="type">"process-key-event"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Key symbol of a key event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
+<td>Keycode of a key event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>Key modifier flags.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A GCancellable or NULL.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A GAsyncReadyCallback to call when the request is satisfied or NULL
+if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-process-key-event-async-finish"></a><h3>ibus_input_context_process_key_event_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_input_context_process_key_event_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()"><code class="function">ibus_input_context_process_key_event_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A GAsyncResult obtained from the GAsyncReadyCallback passed to
+<a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()"><code class="function">ibus_input_context_process_key_event_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or NULL.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the key event is processed;
+<code class="literal">FALSE</code> otherwise or some errors happen and the <em class="parameter"><code>error</code></em> will be set.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-process-key-event"></a><h3>ibus_input_context_process_key_event ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_input_context_process_key_event
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keyval</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> keycode</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> state</code></em>);</pre>
+<p>
+Pass the key event to input method engine and wait for the reply from ibus (i.e. synchronous IPC).
+</p>
+<p>
+See also: <a class="link" href="IBusInputContext.html#ibus-input-context-process-key-event-async" title="ibus_input_context_process_key_event_async ()"><code class="function">ibus_input_context_process_key_event_async()</code></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Key symbol of a key event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
+<td>Keycode of a key event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>Key modifier flags.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE for successfully process the key; FALSE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-set-cursor-location"></a><h3>ibus_input_context_set_cursor_location ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_cursor_location
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> x</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> y</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> w</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint32</span> h</code></em>);</pre>
+<p>
+Set the cursor location of IBus input context asynchronously.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-set-cursor-location" title='The "set-cursor-location" signal'><span class="type">"set-cursor-location"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
+<td>X coordinate of the cursor.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
+<td>Y coordinate of the cursor.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>w</code></em> :</span></p></td>
+<td>Width of the cursor.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>h</code></em> :</span></p></td>
+<td>Height of the cursor.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-set-capabilities"></a><h3>ibus_input_context_set_capabilities ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_capabilities (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> capabilities</code></em>);</pre>
+<p>
+Set the capabilities flags of client application asynchronously.
+When IBUS_CAP_FOCUS is not set, IBUS_CAP_PREEDIT_TEXT, IBUS_CAP_AUXILIARY_TEXT, IBUS_CAP_LOOKUP_TABLE, and IBUS_CAP_PROPERTY have to be all set.
+The panel component does nothing for an application that doesn't support focus.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-set-capabilities" title='The "set-capabilities" signal'><span class="type">"set-capabilities"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>capabilities</code></em> :</span></p></td>
+<td>Capabilities flags of IBusEngine, see <a class="link" href="ibus-ibustypes.html#IBusCapabilite"><span class="type">IBusCapabilite</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-property-activate"></a><h3>ibus_input_context_property_activate ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_property_activate
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *prop_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> state</code></em>);</pre>
+<p>
+Activate the property asynchronously.
+</p>
+<p>
+See also: <a class="link" href="IBusEngine.html#IBusEngine-property-activate" title='The "property-activate" signal'><span class="type">"property_activate"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_name</code></em> :</span></p></td>
+<td>A property name (e.g. "InputMode.WideLatin")</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>A status of the property (e.g. PROP_STATE_CHECKED)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-focus-in"></a><h3>ibus_input_context_focus_in ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_focus_in         (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
+<p>
+Invoked when the client application get focus. An asynchronous IPC will be performed.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-focus-in" title='The "focus-in" signal'><span class="type">"focus_in"</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-focus-out"></a><h3>ibus_input_context_focus_out ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_focus_out        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
+<p>
+Invoked when the client application get focus. An asynchronous IPC will be performed.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-focus-out" title='The "focus-out" signal'><span class="type">"focus_out"</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-reset"></a><h3>ibus_input_context_reset ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_reset            (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
+<p>
+Invoked when the IME is reset. An asynchronous IPC will be performed.
+</p>
+<p>
+see_also: <a class="link" href="IBusEngine.html#IBusEngine-reset" title='The "reset" signal'><span class="type">"reset"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-get-engine-async"></a><h3>ibus_input_context_get_engine_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_get_engine_async (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+An asynchronous IPC will be performed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied or <code class="literal">NULL</code>
+if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-get-engine-async-finish"></a><h3>ibus_input_context_get_engine_async_finish ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_input_context_get_engine_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async" title="ibus_input_context_get_engine_async ()"><code class="function">ibus_input_context_get_engine_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusInputContext.html#ibus-input-context-get-engine-async" title="ibus_input_context_get_engine_async ()"><code class="function">ibus_input_context_get_engine_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An IME engine description for the context, or <code class="literal">NULL</code>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-get-engine"></a><h3>ibus_input_context_get_engine ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_input_context_get_engine       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
+<p>
+Returns an IME engine description for the context.
+A synchronous IPC will be performed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An IME engine description for the context, or NULL. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-set-engine"></a><h3>ibus_input_context_set_engine ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_engine       (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Invoked when the IME engine is changed.
+An asynchronous IPC will be performed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>A name of the engine.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-set-surrounding-text"></a><h3>ibus_input_context_set_surrounding_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_surrounding_text
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> cursor_pos</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> anchor_pos</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> surrounding the current cursor on the application.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
+<td>Current cursor position in characters in <em class="parameter"><code>text</code></em>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>anchor_pos</code></em> :</span></p></td>
+<td>Anchor position of selection in <em class="parameter"><code>text</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-needs-surrounding-text"></a><h3>ibus_input_context_needs_surrounding_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_input_context_needs_surrounding_text
+                                                        (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>);</pre>
+<p>
+Check whether the current engine requires surrounding-text.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if surrounding-text is needed by the current engine;
+<code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-input-context-set-content-type"></a><h3>ibus_input_context_set_content_type ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_input_context_set_content_type (<em class="parameter"><code><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> purpose</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> hints</code></em>);</pre>
+<p>
+Set content-type (primary purpose and hints) of the context.  This
+information is particularly useful to implement intelligent
+behavior in engines, such as automatic input-mode switch and text
+prediction.  For example, to restrict input to numbers, the client
+can call this function with <em class="parameter"><code>purpose</code></em> set to
+<a class="link" href="ibus-ibustypes.html#IBUS-INPUT-PURPOSE-NUMBER:CAPS"><span class="type">IBUS_INPUT_PURPOSE_NUMBER</span></a>.
+</p>
+<p>
+See also: <a class="link" href="IBusEngine.html#IBusEngine-set-content-type" title='The "set-content-type" signal'><span class="type">"set-content-type"</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>purpose</code></em> :</span></p></td>
+<td>Primary purpose of the input context, as an <a class="link" href="ibus-ibustypes.html#IBusInputPurpose" title="enum IBusInputPurpose"><span class="type">IBusInputPurpose</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>hints</code></em> :</span></p></td>
+<td>Hints that augment <em class="parameter"><code>purpose</code></em>, as an <a class="link" href="ibus-ibustypes.html#IBusInputHints" title="enum IBusInputHints"><span class="type">IBusInputHints</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusInputContext.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="IBusInputContext-commit-text"></a><h3>The <code class="literal">"commit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *text,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when the text is going to be committed.
+</p>
+<p>
+(Note: The text object is floating, and it will be released after the signal.
+ If singal handler want to keep the object, the handler should use <code class="function">g_object_ref_sink()</code>
+ to get the ownership of the object.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>Text to be committed.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-cursor-down-lookup-table"></a><h3>The <code class="literal">"cursor-down-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to select next candidate of lookup table.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-cursor-up-lookup-table"></a><h3>The <code class="literal">"cursor-up-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to select previous candidate of lookup table.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-delete-surrounding-text"></a><h3>The <code class="literal">"delete-surrounding-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gint</span>              offset,
+                                                        <span class="type">guint</span>             n_chars,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to delete surrounding text event from IME to client of IME.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>offset</code></em> :</span></p></td>
+<td>the character offset from the cursor position of the text to be deleted.
+A negative value indicates a position before the cursor.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>n_chars</code></em> :</span></p></td>
+<td>the number of characters to be deleted.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-disabled"></a><h3>The <code class="literal">"disabled"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when an IME is disabled.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-enabled"></a><h3>The <code class="literal">"enabled"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when an IME is enabled.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-forward-key-event"></a><h3>The <code class="literal">"forward-key-event"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">guint</span>             keyval,
+                                                        <span class="type">guint</span>             keycode,
+                                                        <span class="type">guint</span>             modifiers,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to forward key event from IME to client of IME.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Key symbol of the keyboard event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keycode</code></em> :</span></p></td>
+<td>Key symbol of the keyboard event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>modifiers</code></em> :</span></p></td>
+<td>Key modifier flags.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-hide-auxiliary-text"></a><h3>The <code class="literal">"hide-auxiliary-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to hide auxiliary text.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-hide-lookup-table"></a><h3>The <code class="literal">"hide-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to hide lookup table.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-hide-preedit-text"></a><h3>The <code class="literal">"hide-preedit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to hide preedit text.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-page-down-lookup-table"></a><h3>The <code class="literal">"page-down-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to view the next page of lookup table.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-page-up-lookup-table"></a><h3>The <code class="literal">"page-up-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to view the previous page of lookup table.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-register-properties"></a><h3>The <code class="literal">"register-properties"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a>     *props,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to register the properties in <em class="parameter"><code>props</code></em>.
+</p>
+<p>
+(Note: The props object is floating, and it will be released after the signal.
+ If singal handler want to keep the object, the handler should use <code class="function">g_object_ref_sink()</code>
+ to get the ownership of the object.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>props</code></em> :</span></p></td>
+<td>An IBusPropList that contains properties.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-show-auxiliary-text"></a><h3>The <code class="literal">"show-auxiliary-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to show auxiliary text.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-show-lookup-table"></a><h3>The <code class="literal">"show-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to show lookup table.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-show-preedit-text"></a><h3>The <code class="literal">"show-preedit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to show preedit text.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-update-auxiliary-text"></a><h3>The <code class="literal">"update-auxiliary-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *arg1,
+                                                        <span class="type">gboolean</span>          arg2,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to hide auxilary text.
+</p>
+<p>
+(Note: The text object is floating, and it will be released after the signal.
+ If singal handler want to keep the object, the handler should use <code class="function">g_object_ref_sink()</code>
+ to get the ownership of the object.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-update-lookup-table"></a><h3>The <code class="literal">"update-lookup-table"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <a class="link" href="IBusLookupTable.html" title="IBusLookupTable"><span class="type">IBusLookupTable</span></a>  *table,
+                                                        <span class="type">gboolean</span>          visible,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to update lookup table.
+</p>
+<p>
+(Note: The table object is floating, and it will be released after the signal.
+ If singal handler want to keep the object, the handler should use <code class="function">g_object_ref_sink()</code>
+ to get the ownership of the object.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>table</code></em> :</span></p></td>
+<td>An IBusLookupTable to be updated.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the table should be visible.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-update-preedit-text"></a><h3>The <code class="literal">"update-preedit-text"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>         *text,
+                                                        <span class="type">guint</span>             cursor_pos,
+                                                        <span class="type">gboolean</span>          visible,
+                                                        <span class="type">gpointer</span>          user_data)       : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to update preedit text.
+</p>
+<p>
+(Note: The text object is floating, and it will be released after the signal.
+ If singal handler want to keep the object, the handler should use <code class="function">g_object_ref_sink()</code>
+ to get the ownership of the object.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>Text to be updated.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cursor_pos</code></em> :</span></p></td>
+<td>Cursor position.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the update is visible.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusInputContext-update-property"></a><h3>The <code class="literal">"update-property"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> *context,
+                                                        <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>     *prop,
+                                                        <span class="type">gpointer</span>          user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted to update the property <em class="parameter"><code>prop</code></em>.
+</p>
+<p>
+(Note: The prop object is floating, and it will be released after the signal.
+ If singal handler want to keep the object, the handler should use <code class="function">g_object_ref_sink()</code>
+ to get the ownership of the object.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em> :</span></p></td>
+<td>An IBusInputContext.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>The IBusProperty to be updated.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

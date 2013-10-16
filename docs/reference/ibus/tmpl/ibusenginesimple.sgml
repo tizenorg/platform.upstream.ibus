@@ -1,0 +1,54 @@
+<!-- ##### SECTION Title ##### -->
+IBusEngineSimple
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### MACRO IBUS_MAX_COMPOSE_LEN ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### STRUCT IBusEngineSimple ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT IBusEngineSimpleClass ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION ibus_engine_simple_add_table ##### -->
+<para>
+
+</para>
+
+@simple: 
+@data: 
+@max_seq_len: 
+@n_seqs: 
+
+

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusEngineSimple</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch03.html" title="Input method engine">
+<link rel="prev" href="IBusEngineDesc.html" title="IBusEngineDesc">
+<link rel="next" href="IBusFactory.html" title="IBusFactory">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusEngineDesc.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusFactory.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#ibus-IBusEngineSimple.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#ibus-IBusEngineSimple.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="ibus-IBusEngineSimple"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="ibus-IBusEngineSimple.top_of_page"></a>IBusEngineSimple</span></h2>
+<p>IBusEngineSimple</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="ibus-IBusEngineSimple.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">#define             <a class="link" href="ibus-IBusEngineSimple.html#IBUS-MAX-COMPOSE-LEN:CAPS" title="IBUS_MAX_COMPOSE_LEN">IBUS_MAX_COMPOSE_LEN</a>
+struct              <a class="link" href="ibus-IBusEngineSimple.html#IBusEngineSimple" title="struct IBusEngineSimple">IBusEngineSimple</a>;
+struct              <a class="link" href="ibus-IBusEngineSimple.html#IBusEngineSimpleClass" title="struct IBusEngineSimpleClass">IBusEngineSimpleClass</a>;
+<span class="returnvalue">void</span>                <a class="link" href="ibus-IBusEngineSimple.html#ibus-engine-simple-add-table" title="ibus_engine_simple_add_table ()">ibus_engine_simple_add_table</a>        (<em class="parameter"><code><a class="link" href="ibus-IBusEngineSimple.html#IBusEngineSimple" title="struct IBusEngineSimple"><span class="type">IBusEngineSimple</span></a> *simple</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">guint16</span> *data</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> max_seq_len</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> n_seqs</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="ibus-IBusEngineSimple.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="ibus-IBusEngineSimple.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBUS-MAX-COMPOSE-LEN:CAPS"></a><h3>IBUS_MAX_COMPOSE_LEN</h3>
+<pre class="programlisting">#define IBUS_MAX_COMPOSE_LEN 7
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusEngineSimple"></a><h3>struct IBusEngineSimple</h3>
+<pre class="programlisting">struct IBusEngineSimple {
+};
+</pre>
+<p>
+IBusEngineSimple properties.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusEngineSimpleClass"></a><h3>struct IBusEngineSimpleClass</h3>
+<pre class="programlisting">struct IBusEngineSimpleClass {
+    /* signals */
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-engine-simple-add-table"></a><h3>ibus_engine_simple_add_table ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_engine_simple_add_table        (<em class="parameter"><code><a class="link" href="ibus-IBusEngineSimple.html#IBusEngineSimple" title="struct IBusEngineSimple"><span class="type">IBusEngineSimple</span></a> *simple</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">guint16</span> *data</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> max_seq_len</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> n_seqs</code></em>);</pre>
+<p>
+Adds an additional table to search to the engine. Each row of the table
+consists of max_seq_len key symbols followed by two guint16 interpreted as
+the high and low words of a gunicode value. Tables are searched starting from
+the last added.
+</p>
+<p>
+The table must be sorted in dictionary order on the numeric value of the key
+symbol fields. (Values beyond the length of the sequence should be zero.)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>simple</code></em> :</span></p></td>
+<td>An IBusEngineSimple.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>data</code></em> :</span></p></td>
+<td>The table which must be available
+during the whole life of the simple engine. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> guint16][<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>max_seq_len</code></em> :</span></p></td>
+<td>Maximum length of a swquence in the table (cannot be greater
+than <a class="link" href="ibus-IBusEngineSimple.html#IBUS-MAX-COMPOSE-LEN:CAPS" title="IBUS_MAX_COMPOSE_LEN"><code class="literal">IBUS_MAX_COMPOSE_LEN</code></a>)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

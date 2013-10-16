@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusRegistry</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch04.html" title="Configuration">
+<link rel="prev" href="IBusObservedPath.html" title="IBusObservedPath">
+<link rel="next" href="ibus-ibusversion.html" title="ibusversion">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusObservedPath.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ibus-ibusversion.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusRegistry.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusRegistry.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusRegistry.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusRegistry.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusRegistry"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusRegistry.top_of_page"></a>IBusRegistry</span></h2>
+<p>IBusRegistry — Registry cache handling.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="IBusRegistry.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<a name="IBusRegistry.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="IBusRegistry.html#IBusRegistry-struct" title="struct IBusRegistry">IBusRegistry</a>;
+struct              <a class="link" href="IBusRegistry.html#IBusRegistryClass" title="struct IBusRegistryClass">IBusRegistryClass</a>;
+<a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="returnvalue">IBusRegistry</span></a> *      <a class="link" href="IBusRegistry.html#ibus-registry-new" title="ibus_registry_new ()">ibus_registry_new</a>                   (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusRegistry.html#ibus-registry-load" title="ibus_registry_load ()">ibus_registry_load</a>                  (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusRegistry.html#ibus-registry-load-in-dir" title="ibus_registry_load_in_dir ()">ibus_registry_load_in_dir</a>           (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *dirname</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusRegistry.html#ibus-registry-load-cache" title="ibus_registry_load_cache ()">ibus_registry_load_cache</a>            (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> is_user</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusRegistry.html#ibus-registry-load-cache-file" title="ibus_registry_load_cache_file ()">ibus_registry_load_cache_file</a>       (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *filename</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusRegistry.html#ibus-registry-save-cache" title="ibus_registry_save_cache ()">ibus_registry_save_cache</a>            (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> is_user</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusRegistry.html#ibus-registry-save-cache-file" title="ibus_registry_save_cache_file ()">ibus_registry_save_cache_file</a>       (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *filename</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusRegistry.html#ibus-registry-output" title="ibus_registry_output ()">ibus_registry_output</a>                (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code><span class="type">GString</span> *output</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indent</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusRegistry.html#ibus-registry-check-modification" title="ibus_registry_check_modification ()">ibus_registry_check_modification</a>    (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusRegistry.html#ibus-registry-get-components" title="ibus_registry_get_components ()">ibus_registry_get_components</a>        (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusRegistry.html#ibus-registry-get-observed-paths" title="ibus_registry_get_observed_paths ()">ibus_registry_get_observed_paths</a>    (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusRegistry.html#ibus-registry-start-monitor-changes" title="ibus_registry_start_monitor_changes ()">ibus_registry_start_monitor_changes</a> (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusRegistry.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusRegistry
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusRegistry.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusRegistry.html#IBusRegistry-changed" title='The "changed" signal'>changed</a>"                                        : <code class="literal">Run Last</code>
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusRegistry.description"></a><h2>Description</h2>
+<p>
+An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> loads IBus component files and generates the cache files.
+</p>
+<p>
+see_also: <a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a>
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusRegistry.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusRegistry-struct"></a><h3>struct IBusRegistry</h3>
+<pre class="programlisting">struct IBusRegistry;</pre>
+<p>
+Registry cache handling.
+You can load the registry from compose files or a cache file.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusRegistryClass"></a><h3>struct IBusRegistryClass</h3>
+<pre class="programlisting">struct IBusRegistryClass {
+    /* class members */
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-new"></a><h3>ibus_registry_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="returnvalue">IBusRegistry</span></a> *      ibus_registry_new                   (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+New a <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-load"></a><h3>ibus_registry_load ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_registry_load                  (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);</pre>
+<p>
+Read all XML files in a IBus component directory (typically
+/usr/share/ibus/component/ *.xml) and update the registry object.
+IBUS_COMPONENT_PATH environment valuable is also available for
+the custom component directories, whose delimiter is ':'.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-load-in-dir"></a><h3>ibus_registry_load_in_dir ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_registry_load_in_dir           (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *dirname</code></em>);</pre>
+<p>
+Read all XML files in <em class="parameter"><code>dirname</code></em>, create a <a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> object for each file,
+and add the component objects to the registry.
+If <em class="parameter"><code>dirname</code></em> is "/usr/share/ibus/component", this API and
+<a class="link" href="IBusRegistry.html#ibus-registry-load" title="ibus_registry_load ()"><code class="function">ibus_registry_load()</code></a> are same.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>dirname</code></em> :</span></p></td>
+<td>IBus component directory which includes XML files.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-load-cache"></a><h3>ibus_registry_load_cache ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_registry_load_cache            (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> is_user</code></em>);</pre>
+<p>
+Load the user or system registry cache.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>is_user</code></em> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the registry cache is loaded in the user directory.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the cache exists and is loaded successfully,
+<code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-load-cache-file"></a><h3>ibus_registry_load_cache_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_registry_load_cache_file       (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *filename</code></em>);</pre>
+<p>
+Load the registry cache <em class="parameter"><code>filename</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>The file path of the registry cache</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the cache exists and is loaded successfully,
+<code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-save-cache"></a><h3>ibus_registry_save_cache ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_registry_save_cache            (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> is_user</code></em>);</pre>
+<p>
+Save the registry in a user directory or system directory.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>is_user</code></em> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the registry cache is saved in the user directory.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the cache is saved successfully, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-save-cache-file"></a><h3>ibus_registry_save_cache_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_registry_save_cache_file       (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *filename</code></em>);</pre>
+<p>
+Save the registry cache <em class="parameter"><code>filename</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>filename</code></em> :</span></p></td>
+<td>The file path of the registry cache</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the cache is saved successfully, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-output"></a><h3>ibus_registry_output ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_registry_output                (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>,
+                                                         <em class="parameter"><code><span class="type">GString</span> *output</code></em>,
+                                                         <em class="parameter"><code><span class="type">int</span> indent</code></em>);</pre>
+<p>
+Output <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> as an XML-formatted string.
+The output string can be then shown on the screen or written to file.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>output</code></em> :</span></p></td>
+<td>GString that holds the result.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>indent</code></em> :</span></p></td>
+<td>level of indent.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-check-modification"></a><h3>ibus_registry_check_modification ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_registry_check_modification    (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);</pre>
+<p>
+Check if the registry is updated.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if mtime is changed; <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-get-components"></a><h3>ibus_registry_get_components ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_registry_get_components        (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);</pre>
+<p>
+List components.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a list of <a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> objects.
+The caller has to call <code class="function">g_list_free()</code> for the returned list. <span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> IBusComponent]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-get-observed-paths"></a><h3>ibus_registry_get_observed_paths ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_registry_get_observed_paths    (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);</pre>
+<p>
+List observed paths.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a list of <a class="link" href="IBusObservedPath.html" title="IBusObservedPath"><span class="type">IBusObservedPath</span></a> objects.
+The caller has to call <code class="function">g_list_free()</code> for the returned list. <span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> IBusObservedPath]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-registry-start-monitor-changes"></a><h3>ibus_registry_start_monitor_changes ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_registry_start_monitor_changes (<em class="parameter"><code><a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry</code></em>);</pre>
+<p>
+Start to monitor observed paths.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusRegistry.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="IBusRegistry-changed"></a><h3>The <code class="literal">"changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a> *registry,
+                                                        <span class="type">gpointer</span>      user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when any observed paths are changed.
+A method is not associated in this class. the "changed"
+signal would be handled in other classes.
+</p>
+<p>
+See also: <a class="link" href="IBusRegistry.html#ibus-registry-start-monitor-changes" title="ibus_registry_start_monitor_changes ()"><code class="function">ibus_registry_start_monitor_changes()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>registry</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusRegistry.html" title="IBusRegistry"><span class="type">IBusRegistry</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

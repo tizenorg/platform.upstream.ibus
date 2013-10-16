@@ -1,0 +1,154 @@
+<!-- ##### SECTION Title ##### -->
+IBusRegistry
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT IBusRegistry ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL IBusRegistry::changed ##### -->
+<para>
+
+</para>
+
+@ibusregistry: the object which received the signal.
+
+<!-- ##### STRUCT IBusRegistryClass ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION ibus_registry_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_load ##### -->
+<para>
+
+</para>
+
+@registry: 
+
+
+<!-- ##### FUNCTION ibus_registry_load_in_dir ##### -->
+<para>
+
+</para>
+
+@registry: 
+@dirname: 
+
+
+<!-- ##### FUNCTION ibus_registry_load_cache ##### -->
+<para>
+
+</para>
+
+@registry: 
+@is_user: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_load_cache_file ##### -->
+<para>
+
+</para>
+
+@registry: 
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_save_cache ##### -->
+<para>
+
+</para>
+
+@registry: 
+@is_user: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_save_cache_file ##### -->
+<para>
+
+</para>
+
+@registry: 
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_output ##### -->
+<para>
+
+</para>
+
+@registry: 
+@output: 
+@indent: 
+
+
+<!-- ##### FUNCTION ibus_registry_check_modification ##### -->
+<para>
+
+</para>
+
+@registry: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_get_components ##### -->
+<para>
+
+</para>
+
+@registry: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_get_observed_paths ##### -->
+<para>
+
+</para>
+
+@registry: 
+@Returns: 
+
+
+<!-- ##### FUNCTION ibus_registry_start_monitor_changes ##### -->
+<para>
+
+</para>
+
+@registry: 
+
+

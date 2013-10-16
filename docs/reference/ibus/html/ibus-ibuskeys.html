@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ibuskeys</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch03.html" title="Input method engine">
+<link rel="prev" href="IBusInputContext.html" title="IBusInputContext">
+<link rel="next" href="IBusKeymap.html" title="IBusKeymap">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusInputContext.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusKeymap.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#ibus-ibuskeys.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#ibus-ibuskeys.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="ibus-ibuskeys"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="ibus-ibuskeys.top_of_page"></a>ibuskeys</span></h2>
+<p>ibuskeys</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="ibus-ibuskeys.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">const <span class="returnvalue">gchar</span> *       <a class="link" href="ibus-ibuskeys.html#ibus-keyval-name" title="ibus_keyval_name ()">ibus_keyval_name</a>                    (<em class="parameter"><code><span class="type">guint</span> keyval</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="ibus-ibuskeys.html#ibus-keyval-from-name" title="ibus_keyval_from_name ()">ibus_keyval_from_name</a>               (<em class="parameter"><code>const <span class="type">gchar</span> *keyval_name</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="ibus-ibuskeys.html#ibus-unicode-to-keyval" title="ibus_unicode_to_keyval ()">ibus_unicode_to_keyval</a>              (<em class="parameter"><code><span class="type">gunichar</span> wc</code></em>);
+<span class="returnvalue">gunichar</span>            <a class="link" href="ibus-ibuskeys.html#ibus-keyval-to-unicode" title="ibus_keyval_to_unicode ()">ibus_keyval_to_unicode</a>              (<em class="parameter"><code><span class="type">guint</span> keyval</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="ibus-ibuskeys.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="ibus-ibuskeys.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="ibus-keyval-name"></a><h3>ibus_keyval_name ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       ibus_keyval_name                    (<em class="parameter"><code><span class="type">guint</span> keyval</code></em>);</pre>
+<p>
+Return the name of a key symbol.
+</p>
+<p>
+Note that the returned string is used internally, so don't free it.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>Key symbol.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Corresponding key name. <code class="literal">NULL</code> if no such key symbol.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-keyval-from-name"></a><h3>ibus_keyval_from_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               ibus_keyval_from_name               (<em class="parameter"><code>const <span class="type">gchar</span> *keyval_name</code></em>);</pre>
+<p>
+Return the key symbol that associate with the key name.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval_name</code></em> :</span></p></td>
+<td>Key name in <span class="type">gdk_keys_by_name</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Corresponding key symbol.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-unicode-to-keyval"></a><h3>ibus_unicode_to_keyval ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               ibus_unicode_to_keyval              (<em class="parameter"><code><span class="type">gunichar</span> wc</code></em>);</pre>
+<p>
+Convert from a ISO10646 character to a key symbol.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>wc</code></em> :</span></p></td>
+<td>a ISO10646 encoded character</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the corresponding IBus key symbol, if one exists.
+or, if there is no corresponding symbol,
+wc | 0x01000000</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-keyval-to-unicode"></a><h3>ibus_keyval_to_unicode ()</h3>
+<pre class="programlisting"><span class="returnvalue">gunichar</span>            ibus_keyval_to_unicode              (<em class="parameter"><code><span class="type">guint</span> keyval</code></em>);</pre>
+<p>
+Convert from an IBus key symbol to the corresponding ISO10646 (Unicode)
+character.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>keyval</code></em> :</span></p></td>
+<td>an IBus key symbol</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the corresponding unicode character, or 0 if there
+is no corresponding character.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

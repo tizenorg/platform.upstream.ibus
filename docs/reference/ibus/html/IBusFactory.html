@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusFactory</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch03.html" title="Input method engine">
+<link rel="prev" href="ibus-IBusEngineSimple.html" title="IBusEngineSimple">
+<link rel="next" href="IBusInputContext.html" title="IBusInputContext">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ibus-IBusEngineSimple.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch03.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusInputContext.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusFactory.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusFactory.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusFactory.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusFactory.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusFactory"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusFactory.top_of_page"></a>IBusFactory</span></h2>
+<p>IBusFactory — Factory for creating engine instances.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="IBusFactory.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<a name="IBusFactory.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="IBusFactory.html#IBusFactory-struct" title="struct IBusFactory">IBusFactory</a>;
+struct              <a class="link" href="IBusFactory.html#IBusFactoryClass" title="struct IBusFactoryClass">IBusFactoryClass</a>;
+<a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       <a class="link" href="IBusFactory.html#ibus-factory-new" title="ibus_factory_new ()">ibus_factory_new</a>                    (<em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusFactory.html#ibus-factory-add-engine" title="ibus_factory_add_engine ()">ibus_factory_add_engine</a>             (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *engine_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GType</span> engine_type</code></em>);
+<a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        <a class="link" href="IBusFactory.html#ibus-factory-create-engine" title="ibus_factory_create_engine ()">ibus_factory_create_engine</a>          (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *engine_name</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusFactory.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusService.html" title="IBusService">IBusService</a>
+                     +----IBusFactory
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusFactory.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusFactory.html#IBusFactory-create-engine" title='The "create-engine" signal'>create-engine</a>"                                  : <code class="literal">Run Last</code>
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusFactory.description"></a><h2>Description</h2>
+<p>
+An IBusFactory is an <a class="link" href="IBusService.html" title="IBusService"><span class="type">IBusService</span></a> that creates input method engine (IME) instance.
+It provides CreateEngine remote method, which creates an IME instance by name,
+and returns the D-Bus object path to IBus daemon.
+</p>
+<p>
+<em class="parameter"><code>see_also</code></em>: <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusFactory.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusFactory-struct"></a><h3>struct IBusFactory</h3>
+<pre class="programlisting">struct IBusFactory;</pre>
+<p>
+An opaque data type representing an IBusFactory.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusFactoryClass"></a><h3>struct IBusFactoryClass</h3>
+<pre class="programlisting">struct IBusFactoryClass {
+    /* signals */
+    IBusEngine *
+                (* create_engine)
+                                    (IBusFactory    *factory,
+                                     const gchar    *engine_name);
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-factory-new"></a><h3>ibus_factory_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="returnvalue">IBusFactory</span></a> *       ibus_factory_new                    (<em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>);</pre>
+<p>
+New an IBusFactory.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An GDBusConnection.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusFactory.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-factory-add-engine"></a><h3>ibus_factory_add_engine ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_factory_add_engine             (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *engine_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GType</span> engine_type</code></em>);</pre>
+<p>
+Add an engine to the factory.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
+<td>An IBusFactory.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine_name</code></em> :</span></p></td>
+<td>Name of an engine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine_type</code></em> :</span></p></td>
+<td>GType of an engine.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-factory-create-engine"></a><h3>ibus_factory_create_engine ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a> *        ibus_factory_create_engine          (<em class="parameter"><code><a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *engine_name</code></em>);</pre>
+<p>
+Create an <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> with <em class="parameter"><code>engine_name</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine_name</code></em> :</span></p></td>
+<td>Name of an engine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a> with <em class="parameter"><code>engine_name</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusFactory.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="IBusFactory-create-engine"></a><h3>The <code class="literal">"create-engine"</code> signal</h3>
+<pre class="programlisting"><a class="link" href="IBusEngine.html" title="IBusEngine"><span class="returnvalue">IBusEngine</span></a>*         user_function                      (<a class="link" href="IBusFactory.html" title="IBusFactory"><span class="type">IBusFactory</span></a> *factory,
+                                                        <span class="type">gchar</span>       *engine_name,
+                                                        <span class="type">gpointer</span>     user_data)        : <code class="literal">Run Last</code></pre>
+<p>
+The ::create-engine signal is a signal to create IBusEngine
+with <em class="parameter"><code>engine_name</code></em>, which gets emitted when IBusFactory
+received CreateEngine dbus method. The callback functions
+will be called until a callback returns a non-null object
+of IBusEngine.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>factory</code></em> :</span></p></td>
+<td>the factory which received the signal</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>engine_name</code></em> :</span></p></td>
+<td>the engine_name which received the signal</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>returns</code></em> :</span></p></td>
+<td>An IBusEngine. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusConfig</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch04.html" title="Configuration">
+<link rel="prev" href="ch04.html" title="Configuration">
+<link rel="next" href="IBusConfigService.html" title="IBusConfigService">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch04.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch04.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusConfigService.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusConfig.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusConfig.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusConfig.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusConfig.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#IBusConfig.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusConfig"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusConfig.top_of_page"></a>IBusConfig</span></h2>
+<p>IBusConfig — IBus engine configuration module.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="IBusConfig.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="IBusConfig.html#IBusConfig-struct" title="struct IBusConfig">IBusConfig</a>;
+struct              <a class="link" href="IBusConfig.html#IBusConfigClass" title="struct IBusConfigClass">IBusConfigClass</a>;
+<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusConfig.html#ibus-config-new" title="ibus_config_new ()">ibus_config_new</a>                     (<em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusConfig.html#ibus-config-new-async" title="ibus_config_new_async ()">ibus_config_new_async</a>               (<em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusConfig.html#ibus-config-new-async-finish" title="ibus_config_new_async_finish ()">ibus_config_new_async_finish</a>        (<em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GVariant</span> *          <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()">ibus_config_get_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusConfig.html#ibus-config-get-value-async" title="ibus_config_get_value_async ()">ibus_config_get_value_async</a>         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">GVariant</span> *          <a class="link" href="IBusConfig.html#ibus-config-get-value-async-finish" title="ibus_config_get_value_async_finish ()">ibus_config_get_value_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *result</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GVariant</span> *          <a class="link" href="IBusConfig.html#ibus-config-get-values" title="ibus_config_get_values ()">ibus_config_get_values</a>              (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusConfig.html#ibus-config-get-values-async" title="ibus_config_get_values_async ()">ibus_config_get_values_async</a>        (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">GVariant</span> *          <a class="link" href="IBusConfig.html#ibus-config-get-values-async-finish" title="ibus_config_get_values_async_finish ()">ibus_config_get_values_async_finish</a> (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *result</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusConfig.html#ibus-config-set-value" title="ibus_config_set_value ()">ibus_config_set_value</a>               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusConfig.html#ibus-config-set-value-async" title="ibus_config_set_value_async ()">ibus_config_set_value_async</a>         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusConfig.html#ibus-config-set-value-async-finish" title="ibus_config_set_value_async_finish ()">ibus_config_set_value_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *result</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusConfig.html#ibus-config-unset" title="ibus_config_unset ()">ibus_config_unset</a>                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusConfig.html#ibus-config-watch" title="ibus_config_watch ()">ibus_config_watch</a>                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusConfig.html#ibus-config-unwatch" title="ibus_config_unwatch ()">ibus_config_unwatch</a>                 (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusConfig.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GDBusProxy
+         +----<a class="link" href="IBusProxy.html" title="IBusProxy">IBusProxy</a>
+               +----IBusConfig
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusConfig.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+IBusConfig implements
+ GDBusInterface,  GInitable and  GAsyncInitable.</p>
+</div>
+<div class="refsect1">
+<a name="IBusConfig.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusConfig.html#IBusConfig-value-changed" title='The "value-changed" signal'>value-changed</a>"                                  : <code class="literal">Run Last</code>
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusConfig.description"></a><h2>Description</h2>
+<p>
+An IBusConfig provides engine configuration methods
+such as get and set the configure settings to configuration file.
+</p>
+<p>
+Currently, IBusConfig supports gconf.
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusConfig.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusConfig-struct"></a><h3>struct IBusConfig</h3>
+<pre class="programlisting">struct IBusConfig;</pre>
+<p>
+An opaque data type representing an IBusConfig.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusConfigClass"></a><h3>struct IBusConfigClass</h3>
+<pre class="programlisting">struct IBusConfigClass {
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-new"></a><h3>ibus_config_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_config_new                     (<em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+New an <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> from existing <span class="type">GDBusConnection</span>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>A <span class="type">GDBusConnection</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An newly allocated <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> corresponding to <em class="parameter"><code>connection</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-new-async"></a><h3>ibus_config_new_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_config_new_async               (<em class="parameter"><code><span class="type">GDBusConnection</span> *connection</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+New an <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>connection</code></em> :</span></p></td>
+<td>An <span class="type">GDBusConnection</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied.
+The callback should not be <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-new-async-finish"></a><h3>ibus_config_new_async_finish ()</h3>
+<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_config_new_async_finish        (<em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+<em class="parameter"><code>returns</code></em>: A newly allocated <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>.
+</p>
+<p>
+Finishes an operation started with <a class="link" href="IBusConfig.html#ibus-config-new-async" title="ibus_config_new_async ()"><code class="function">ibus_config_new_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> pass to
+<a class="link" href="IBusConfig.html#ibus-config-new-async" title="ibus_config_new_async ()"><code class="function">ibus_config_new_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-get-value"></a><h3>ibus_config_get_value ()</h3>
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *          ibus_config_get_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Get the value of a configuration option synchronously.
+</p>
+<p>
+GConf stores configure options in a tree-like structure,
+and the IBus related setting is at /desktop/ibus,
+thus, <em class="parameter"><code>section</code></em> here is a path from there,
+while <em class="parameter"><code>name</code></em> is the key of that configuration option.
+</p>
+<p>
+ibus-chewing, for example, stores its setting in /desktop/ibus/engine/Chewing,
+so the section name for it is "engine/Chewing".
+See also: <a class="link" href="IBusConfig.html#ibus-config-set-value" title="ibus_config_set_value ()"><code class="function">ibus_config_set_value()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <span class="type">GVariant</span> or <code class="literal">NULL</code>. Free with <code class="function">g_variant_unref()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-get-value-async"></a><h3>ibus_config_get_value_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_config_get_value_async         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Get the value of a configuration option asynchronously.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()"><code class="function">ibus_config_get_value()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_ms</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>Callback function to invoke when the return value is ready.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-get-value-async-finish"></a><h3>ibus_config_get_value_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *          ibus_config_get_value_async_finish  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *result</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finish get value of a configuration option.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-get-value-async" title="ibus_config_get_value_async ()"><code class="function">ibus_config_get_value_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>A <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <span class="type">GVariant</span> or <code class="literal">NULL</code> if error is set. Free with <code class="function">g_variant_unref()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-get-values"></a><h3>ibus_config_get_values ()</h3>
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *          ibus_config_get_values              (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>);</pre>
+<p>
+Get all values in a section synchronously.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-set-value" title="ibus_config_set_value ()"><code class="function">ibus_config_set_value()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <span class="type">GVariant</span> or <code class="literal">NULL</code>. Free with <code class="function">g_variant_unref()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-get-values-async"></a><h3>ibus_config_get_values_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_config_get_values_async        (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Get all values in a section asynchronously.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-get-values" title="ibus_config_get_values ()"><code class="function">ibus_config_get_values()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_ms</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>Callback function to invoke when the return value is ready.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-get-values-async-finish"></a><h3>ibus_config_get_values_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *          ibus_config_get_values_async_finish (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *result</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finish get values in a section.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-get-values-async" title="ibus_config_get_values_async ()"><code class="function">ibus_config_get_values_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>A <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <span class="type">GVariant</span> or <code class="literal">NULL</code> if error is set. Free with <code class="function">g_variant_unref()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-set-value"></a><h3>ibus_config_set_value ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_config_set_value               (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>);</pre>
+<p>
+Set the value of a configuration option synchronously.
+See also: <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()"><code class="function">ibus_config_get_value()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option its self.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>A <span class="type">GVariant</span> that holds the value. If the value is floating, the
+function takes ownership of it.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if succeed; <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-set-value-async"></a><h3>ibus_config_set_value_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_config_set_value_async         (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_ms</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Set the value of a configuration option asynchronously.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-set-value" title="ibus_config_set_value ()"><code class="function">ibus_config_set_value()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>A <span class="type">GVariant</span> that holds the value. If the value is floating, the
+function takes ownership of it.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_ms</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>Callback function to invoke when the return value is ready.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-set-value-async-finish"></a><h3>ibus_config_set_value_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_config_set_value_async_finish  (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *result</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finish set value of a configuration option.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-set-value-async" title="ibus_config_set_value_async ()"><code class="function">ibus_config_set_value_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>A <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>result</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> or <code class="literal">FALSE</code> if error is set.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-unset"></a><h3>ibus_config_unset ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_config_unset                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Remove an entry of a configuration option.
+See also: <a class="link" href="IBusConfig.html#ibus-config-get-value" title="ibus_config_get_value ()"><code class="function">ibus_config_get_value()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option its self.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if succeed; <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-watch"></a><h3>ibus_config_watch ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_config_watch                   (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Subscribe to the configuration option change notification.
+</p>
+<p>
+Until this function is called, every change will be notified to the
+client through <a class="link" href="IBusConfig.html#IBusConfig-value-changed" title='The "value-changed" signal'><span class="type">"value-changed"</span></a> signal.  Clients should
+call <a class="link" href="IBusConfig.html#ibus-config-watch" title="ibus_config_watch ()"><code class="function">ibus_config_watch()</code></a> with the sections they are interested in,
+to reduce the number of D-Bus messages.
+</p>
+<p>
+See also: <a class="link" href="IBusConfig.html#ibus-config-unwatch" title="ibus_config_unwatch ()"><code class="function">ibus_config_unwatch()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option its self. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if succeed; <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-config-unwatch"></a><h3>ibus_config_unwatch ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_config_unwatch                 (<em class="parameter"><code><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *section</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Unsubscribe from the configuration option change notification.
+</p>
+<p>
+See also: ibus_config_watch.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name of the configuration option. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the configure option its self. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if succeed; <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusConfig.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="IBusConfig-value-changed"></a><h3>The <code class="literal">"value-changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> *config,
+                                                        <span class="type">gchar</span>      *section,
+                                                        <span class="type">gchar</span>      *name,
+                                                        <span class="type">GVariant</span>   *value,
+                                                        <span class="type">gpointer</span>    user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when configuration value is changed.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>Argument <em class="parameter"><code>user_data</code></em> is ignored in this function.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>config</code></em> :</span></p></td>
+<td>An IBusConfig.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>section</code></em> :</span></p></td>
+<td>Section name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name of the property.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>Value.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

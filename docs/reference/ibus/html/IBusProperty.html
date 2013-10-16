@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusProperty</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="IBusPanelService.html" title="IBusPanelService">
+<link rel="next" href="IBusPropList.html" title="IBusPropList">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusPanelService.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusPropList.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusProperty.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusProperty.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusProperty.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusProperty.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusProperty"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusProperty.top_of_page"></a>IBusProperty</span></h2>
+<p>IBusProperty — UI component for input method engine property.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="IBusProperty.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<a name="IBusProperty.synopsis"></a><h2>Synopsis</h2>
+<a name="IBusPropType"></a><a name="IBusPropState"></a><a name="IBusPropList"></a><pre class="synopsis">enum                <a class="link" href="IBusProperty.html#IBusPropType-enum" title="enum IBusPropType">IBusPropType</a>;
+enum                <a class="link" href="IBusProperty.html#IBusPropState-enum" title="enum IBusPropState">IBusPropState</a>;
+struct              <a class="link" href="IBusProperty.html#IBusProperty-struct" title="struct IBusProperty">IBusProperty</a>;
+struct              <a class="link" href="IBusProperty.html#IBusPropertyClass" title="struct IBusPropertyClass">IBusPropertyClass</a>;
+<a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      <a class="link" href="IBusProperty.html#ibus-property-new" title="ibus_property_new ()">ibus_property_new</a>                   (<em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropType"><span class="type">IBusPropType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *label</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *icon</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *tooltip</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> sensitive</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> visible</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropState"><span class="type">IBusPropState</span></a> state</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);
+<a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      <a class="link" href="IBusProperty.html#ibus-property-new-varargs" title="ibus_property_new_varargs ()">ibus_property_new_varargs</a>           (<em class="parameter"><code>const <span class="type">gchar</span> *first_property_name</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+const <span class="returnvalue">gchar</span> *       <a class="link" href="IBusProperty.html#ibus-property-get-key" title="ibus_property_get_key ()">ibus_property_get_key</a>               (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusProperty.html#ibus-property-get-label" title="ibus_property_get_label ()">ibus_property_get_label</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-label" title="ibus_property_set_label ()">ibus_property_set_label</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *label</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusProperty.html#ibus-property-get-symbol" title="ibus_property_get_symbol ()">ibus_property_get_symbol</a>            (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-symbol" title="ibus_property_set_symbol ()">ibus_property_set_symbol</a>            (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *symbol</code></em>);
+const <span class="returnvalue">gchar</span> *       <a class="link" href="IBusProperty.html#ibus-property-get-icon" title="ibus_property_get_icon ()">ibus_property_get_icon</a>              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-icon" title="ibus_property_set_icon ()">ibus_property_set_icon</a>              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *icon</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusProperty.html#ibus-property-get-tooltip" title="ibus_property_get_tooltip ()">ibus_property_get_tooltip</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-tooltip" title="ibus_property_set_tooltip ()">ibus_property_set_tooltip</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *tooltip</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusProperty.html#ibus-property-get-sensitive" title="ibus_property_get_sensitive ()">ibus_property_get_sensitive</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-sensitive" title="ibus_property_set_sensitive ()">ibus_property_set_sensitive</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> sensitive</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusProperty.html#ibus-property-get-visible" title="ibus_property_get_visible ()">ibus_property_get_visible</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-visible" title="ibus_property_set_visible ()">ibus_property_set_visible</a>           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> visible</code></em>);
+<a class="link" href="IBusProperty.html#IBusPropType"><span class="returnvalue">IBusPropType</span></a>        <a class="link" href="IBusProperty.html#ibus-property-get-prop-type" title="ibus_property_get_prop_type ()">ibus_property_get_prop_type</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<a class="link" href="IBusProperty.html#IBusPropState"><span class="returnvalue">IBusPropState</span></a>       <a class="link" href="IBusProperty.html#ibus-property-get-state" title="ibus_property_get_state ()">ibus_property_get_state</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-state" title="ibus_property_set_state ()">ibus_property_set_state</a>             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropState"><span class="type">IBusPropState</span></a> state</code></em>);
+<a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> *      <a class="link" href="IBusProperty.html#ibus-property-get-sub-props" title="ibus_property_get_sub_props ()">ibus_property_get_sub_props</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusProperty.html#ibus-property-set-sub-props" title="ibus_property_set_sub_props ()">ibus_property_set_sub_props</a>         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusProperty.html#ibus-property-update" title="ibus_property_update ()">ibus_property_update</a>                (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop_update</code></em>);
+                    <a class="link" href="IBusProperty.html#IBusPropListClass" title="IBusPropListClass">IBusPropListClass</a>;
+                    <a class="link" href="IBusProperty.html#IBusPropList-struct" title="IBusPropList">IBusPropList</a>;
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusProperty.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GEnum
+   +----IBusPropType
+</pre>
+<pre class="synopsis">
+  GEnum
+   +----IBusPropState
+</pre>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusProperty
+</pre>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusPropList
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusProperty.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusProperty.html#IBusProperty--icon" title='The "icon" property'>icon</a>"                     <span class="type">gchar</span>*                : Read / Write
+  "<a class="link" href="IBusProperty.html#IBusProperty--key" title='The "key" property'>key</a>"                      <span class="type">gchar</span>*                : Read / Write / Construct Only
+  "<a class="link" href="IBusProperty.html#IBusProperty--label" title='The "label" property'>label</a>"                    <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>*             : Read / Write / Construct
+  "<a class="link" href="IBusProperty.html#IBusProperty--prop-type" title='The "prop-type" property'>prop-type</a>"                <a class="link" href="IBusProperty.html#IBusPropType"><span class="type">IBusPropType</span></a>          : Read / Write / Construct Only
+  "<a class="link" href="IBusProperty.html#IBusProperty--sensitive" title='The "sensitive" property'>sensitive</a>"                <span class="type">gboolean</span>              : Read / Write
+  "<a class="link" href="IBusProperty.html#IBusProperty--state" title='The "state" property'>state</a>"                    <a class="link" href="IBusProperty.html#IBusPropState"><span class="type">IBusPropState</span></a>         : Read / Write
+  "<a class="link" href="IBusProperty.html#IBusProperty--sub-props" title='The "sub-props" property'>sub-props</a>"                <a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a>*         : Read / Write
+  "<a class="link" href="IBusProperty.html#IBusProperty--symbol" title='The "symbol" property'>symbol</a>"                   <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>*             : Read / Write / Construct
+  "<a class="link" href="IBusProperty.html#IBusProperty--tooltip" title='The "tooltip" property'>tooltip</a>"                  <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>*             : Read / Write
+  "<a class="link" href="IBusProperty.html#IBusProperty--visible" title='The "visible" property'>visible</a>"                  <span class="type">gboolean</span>              : Read / Write
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusProperty.description"></a><h2>Description</h2>
+<p>
+An IBusProperty is an UI component like a button or a menu item
+which shows the status of corresponding input method engine property.
+End user can operate and see the current status of IME through these components.
+For example, ibus-chewing users change the English/Chinese input mode by
+pressing ctrl-space or click on the Eng/Chi switch button.
+And the IBusProperty shows the change correspondingly.
+</p>
+<p>
+see_also: <a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a>, <a class="link" href="IBusEngine.html" title="IBusEngine"><span class="type">IBusEngine</span></a>
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusProperty.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusPropType-enum"></a><h3>enum IBusPropType</h3>
+<pre class="programlisting">typedef enum {
+    PROP_TYPE_NORMAL = 0,
+    PROP_TYPE_TOGGLE = 1,
+    PROP_TYPE_RADIO = 2,
+    PROP_TYPE_MENU = 3,
+    PROP_TYPE_SEPARATOR = 4,
+} IBusPropType;
+</pre>
+<p>
+Type enumeration of IBusProperty.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="PROP-TYPE-NORMAL:CAPS"></a><span class="term"><code class="literal">PROP_TYPE_NORMAL</code></span></p></td>
+<td>Property is shown as normal text.
+</td>
+</tr>
+<tr>
+<td><p><a name="PROP-TYPE-TOGGLE:CAPS"></a><span class="term"><code class="literal">PROP_TYPE_TOGGLE</code></span></p></td>
+<td>Property is shown as a toggle button.
+</td>
+</tr>
+<tr>
+<td><p><a name="PROP-TYPE-RADIO:CAPS"></a><span class="term"><code class="literal">PROP_TYPE_RADIO</code></span></p></td>
+<td>Property is shown as a radio selection option.
+</td>
+</tr>
+<tr>
+<td><p><a name="PROP-TYPE-MENU:CAPS"></a><span class="term"><code class="literal">PROP_TYPE_MENU</code></span></p></td>
+<td>Property is shown as a menu, usually imply it has sub menu
+items.
+</td>
+</tr>
+<tr>
+<td><p><a name="PROP-TYPE-SEPARATOR:CAPS"></a><span class="term"><code class="literal">PROP_TYPE_SEPARATOR</code></span></p></td>
+<td>A separator for menu.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusPropState-enum"></a><h3>enum IBusPropState</h3>
+<pre class="programlisting">typedef enum {
+    PROP_STATE_UNCHECKED = 0,
+    PROP_STATE_CHECKED = 1,
+    PROP_STATE_INCONSISTENT = 2,
+} IBusPropState;
+</pre>
+<p>
+State of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. The actual effect depends on <a class="link" href="IBusProperty.html#IBusPropType"><span class="type">IBusPropType</span></a> of the
+IBusProperty.
+</p>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term">PROP_TYPE_TOGGLE</span></p></td>
+<td><p>Emphasized if PROP_STATE_CHECKED, normal otherwise.</p></td>
+</tr>
+<tr>
+<td><p><span class="term">PROP_TYPE_RADIO</span></p></td>
+<td><p>Option checked if PROP_STATE_CHECKED, unchecked otherwise.</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>
+No effect on other types.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><a name="PROP-STATE-UNCHECKED:CAPS"></a><span class="term"><code class="literal">PROP_STATE_UNCHECKED</code></span></p></td>
+<td>Property option is unchecked.
+</td>
+</tr>
+<tr>
+<td><p><a name="PROP-STATE-CHECKED:CAPS"></a><span class="term"><code class="literal">PROP_STATE_CHECKED</code></span></p></td>
+<td>Property option is checked.
+</td>
+</tr>
+<tr>
+<td><p><a name="PROP-STATE-INCONSISTENT:CAPS"></a><span class="term"><code class="literal">PROP_STATE_INCONSISTENT</code></span></p></td>
+<td>The state is inconsistent with the associated IME
+property.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty-struct"></a><h3>struct IBusProperty</h3>
+<pre class="programlisting">struct IBusProperty;</pre>
+<p>
+UI component for input method engine property.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusPropertyClass"></a><h3>struct IBusPropertyClass</h3>
+<pre class="programlisting">struct IBusPropertyClass {
+    IBusSerializableClass parent;
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-new"></a><h3>ibus_property_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      ibus_property_new                   (<em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropType"><span class="type">IBusPropType</span></a> type</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *label</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *icon</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *tooltip</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> sensitive</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> visible</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropState"><span class="type">IBusPropState</span></a> state</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);</pre>
+<p>
+New a <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>key</code></em> :</span></p></td>
+<td>Unique Identity for the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>
+<a class="link" href="IBusProperty.html#IBusPropType"><span class="type">IBusPropType</span></a> of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>label</code></em> :</span></p></td>
+<td>Text shown in UI.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>icon</code></em> :</span></p></td>
+<td>Icon file for the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tooltip</code></em> :</span></p></td>
+<td>Message shown if mouse hovered the  <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>sensitive</code></em> :</span></p></td>
+<td>Whether the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> is sensitive to keyboard and mouse event.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> is visible.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>IBusPropState of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>
+<a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> that contains sub IBusProperties. <span class="annotation">[<acronym title="NULL is ok, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-new-varargs"></a><h3>ibus_property_new_varargs ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="returnvalue">IBusProperty</span></a> *      ibus_property_new_varargs           (<em class="parameter"><code>const <span class="type">gchar</span> *first_property_name</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+New a <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+<a class="link" href="IBusProperty.html#ibus-property-new-varargs" title="ibus_property_new_varargs ()"><code class="function">ibus_property_new_varargs()</code></a> supports the va_list format.
+name property is required. e.g.
+ibus_property_new_varargs("key", "TypingMode", "type", PROP_TYPE_MENU, NULL)
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>first_property_name</code></em> :</span></p></td>
+<td>Name of the first property.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-key"></a><h3>ibus_property_get_key ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       ibus_property_get_key               (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the key of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the key of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. Should not be freed.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-label"></a><h3>ibus_property_get_label ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_property_get_label             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the label of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the label of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. Should not be freed. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-label"></a><h3>ibus_property_set_label ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_label             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *label</code></em>);</pre>
+<p>
+Set the label of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>label</code></em> :</span></p></td>
+<td>Text shown in UI.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-symbol"></a><h3>ibus_property_get_symbol ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_property_get_symbol            (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the symbol of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the symbol of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. Should not be freed. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-symbol"></a><h3>ibus_property_set_symbol ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_symbol            (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *symbol</code></em>);</pre>
+<p>
+Set the symbol of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>symbol</code></em> :</span></p></td>
+<td>Text shown in UI.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-icon"></a><h3>ibus_property_get_icon ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       ibus_property_get_icon              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the icon of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the icon of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. Should not be freed.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-icon"></a><h3>ibus_property_set_icon ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_icon              (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *icon</code></em>);</pre>
+<p>
+Set the icon of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>icon</code></em> :</span></p></td>
+<td>Icon shown in UI. It could be a full path of an icon file or an icon name.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-tooltip"></a><h3>ibus_property_get_tooltip ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_property_get_tooltip           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the tooltip of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the tooltip of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>. Should not be freed. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-tooltip"></a><h3>ibus_property_set_tooltip ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_tooltip           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *tooltip</code></em>);</pre>
+<p>
+Set the tooltip of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tooltip</code></em> :</span></p></td>
+<td>Text of the tooltip.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-sensitive"></a><h3>ibus_property_get_sensitive ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_property_get_sensitive         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the sensitive of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the sensitive of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-sensitive"></a><h3>ibus_property_set_sensitive ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_sensitive         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> sensitive</code></em>);</pre>
+<p>
+Set whether the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> is sensitive.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>sensitive</code></em> :</span></p></td>
+<td>Whether the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> is sensitive.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-visible"></a><h3>ibus_property_get_visible ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_property_get_visible           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the visible of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the visible of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-visible"></a><h3>ibus_property_set_visible ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_visible           (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> visible</code></em>);</pre>
+<p>
+Set whether the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> is visible.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>visible</code></em> :</span></p></td>
+<td>Whether the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> is visible.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-prop-type"></a><h3>ibus_property_get_prop_type ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropType"><span class="returnvalue">IBusPropType</span></a>        ibus_property_get_prop_type         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-state"></a><h3>ibus_property_get_state ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropState"><span class="returnvalue">IBusPropState</span></a>       ibus_property_get_state             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the state of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the state of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-state"></a><h3>ibus_property_set_state ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_state             (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropState"><span class="type">IBusPropState</span></a> state</code></em>);</pre>
+<p>
+Set the state of the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>state</code></em> :</span></p></td>
+<td>The state of the <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-get-sub-props"></a><h3>ibus_property_get_sub_props ()</h3>
+<pre class="programlisting"><a class="link" href="IBusProperty.html#IBusPropList"><span class="returnvalue">IBusPropList</span></a> *      ibus_property_get_sub_props         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>);</pre>
+<p>
+Get the IBusPropList of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the IBusPropList of <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+Should not be freed. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-set-sub-props"></a><h3>ibus_property_set_sub_props ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_property_set_sub_props         (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> *prop_list</code></em>);</pre>
+<p>
+Set the sub IBusProperties.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_list</code></em> :</span></p></td>
+<td>
+<a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> that contains sub IBusProperties.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-property-update"></a><h3>ibus_property_update ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_property_update                (<em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> *prop_update</code></em>);</pre>
+<p>
+Update the content of an <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.
+<a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a> <em class="parameter"><code>prop_update</code></em> can either be sub-property of <em class="parameter"><code>prop</code></em>,
+or holds new values for <em class="parameter"><code>prop</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusProperty.html" title="IBusProperty"><span class="type">IBusProperty</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>prop_update</code></em> :</span></p></td>
+<td>
+<a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a> that contains sub IBusProperties.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE for update suceeded; FALSE otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusPropListClass"></a><h3>IBusPropListClass</h3>
+<pre class="programlisting">typedef struct {
+    IBusSerializableClass parent;
+} IBusPropListClass;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusPropList-struct"></a><h3>IBusPropList</h3>
+<pre class="programlisting">typedef struct {
+    GArray *properties;
+} IBusPropList;
+</pre>
+<p>
+An array of IBusProperties.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="type">GArray</span> *<em class="structfield"><code><a name="IBusPropList-struct.properties"></a>properties</code></em>;</span></p></td>
+<td>GArray that holds IBusProperties.</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusProperty.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="IBusProperty--icon"></a><h3>The <code class="literal">"icon"</code> property</h3>
+<pre class="programlisting">  "icon"                     <span class="type">gchar</span>*                : Read / Write</pre>
+<p>The icon of property.</p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--key"></a><h3>The <code class="literal">"key"</code> property</h3>
+<pre class="programlisting">  "key"                      <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<p>The key of property.</p>
+<p>Default value: ""</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--label"></a><h3>The <code class="literal">"label"</code> property</h3>
+<pre class="programlisting">  "label"                    <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>*             : Read / Write / Construct</pre>
+<p>The label of property.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--prop-type"></a><h3>The <code class="literal">"prop-type"</code> property</h3>
+<pre class="programlisting">  "prop-type"                <a class="link" href="IBusProperty.html#IBusPropType"><span class="type">IBusPropType</span></a>          : Read / Write / Construct Only</pre>
+<p>The type of property.</p>
+<p>Default value: PROP_TYPE_NORMAL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--sensitive"></a><h3>The <code class="literal">"sensitive"</code> property</h3>
+<pre class="programlisting">  "sensitive"                <span class="type">gboolean</span>              : Read / Write</pre>
+<p>The sensitive of property.</p>
+<p>Default value: TRUE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--state"></a><h3>The <code class="literal">"state"</code> property</h3>
+<pre class="programlisting">  "state"                    <a class="link" href="IBusProperty.html#IBusPropState"><span class="type">IBusPropState</span></a>         : Read / Write</pre>
+<p>The state of property.</p>
+<p>Default value: PROP_STATE_UNCHECKED</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--sub-props"></a><h3>The <code class="literal">"sub-props"</code> property</h3>
+<pre class="programlisting">  "sub-props"                <a class="link" href="IBusProperty.html#IBusPropList"><span class="type">IBusPropList</span></a>*         : Read / Write</pre>
+<p>The sub properties of property.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--symbol"></a><h3>The <code class="literal">"symbol"</code> property</h3>
+<pre class="programlisting">  "symbol"                   <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>*             : Read / Write / Construct</pre>
+<p>The symbol of property.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--tooltip"></a><h3>The <code class="literal">"tooltip"</code> property</h3>
+<pre class="programlisting">  "tooltip"                  <a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a>*             : Read / Write</pre>
+<p>The tooltip of property.</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusProperty--visible"></a><h3>The <code class="literal">"visible"</code> property</h3>
+<pre class="programlisting">  "visible"                  <span class="type">gboolean</span>              : Read / Write</pre>
+<p>The visible of property.</p>
+<p>Default value: TRUE</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusText</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch02.html" title="Panel (User Interfaces)">
+<link rel="prev" href="IBusPropList.html" title="IBusPropList">
+<link rel="next" href="ch03.html" title="Input method engine">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="IBusPropList.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="ch03.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusText.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusText.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusText.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusText"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusText.top_of_page"></a>IBusText</span></h2>
+<p>IBusText — Text with decorating information.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="IBusText.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="IBusText.html#IBusText-struct" title="struct IBusText">IBusText</a>;
+struct              <a class="link" href="IBusText.html#IBusTextClass" title="struct IBusTextClass">IBusTextClass</a>;
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusText.html#ibus-text-new-from-string" title="ibus_text_new_from_string ()">ibus_text_new_from_string</a>           (<em class="parameter"><code>const <span class="type">gchar</span> *str</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusText.html#ibus-text-new-from-ucs4" title="ibus_text_new_from_ucs4 ()">ibus_text_new_from_ucs4</a>             (<em class="parameter"><code>const <span class="type">gunichar</span> *str</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusText.html#ibus-text-new-from-static-string" title="ibus_text_new_from_static_string ()">ibus_text_new_from_static_string</a>    (<em class="parameter"><code>const <span class="type">gchar</span> *str</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusText.html#ibus-text-new-from-printf" title="ibus_text_new_from_printf ()">ibus_text_new_from_printf</a>           (<em class="parameter"><code>const <span class="type">gchar</span> *fmt</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);
+<a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          <a class="link" href="IBusText.html#ibus-text-new-from-unichar" title="ibus_text_new_from_unichar ()">ibus_text_new_from_unichar</a>          (<em class="parameter"><code><span class="type">gunichar</span> c</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusText.html#ibus-text-append-attribute" title="ibus_text_append_attribute ()">ibus_text_append_attribute</a>          (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> type</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> value</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> start_index</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> end_index</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="IBusText.html#ibus-text-get-length" title="ibus_text_get_length ()">ibus_text_get_length</a>                (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusText.html#ibus-text-get-is-static" title="ibus_text_get_is_static ()">ibus_text_get_is_static</a>             (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+const <span class="returnvalue">gchar</span> *       <a class="link" href="IBusText.html#ibus-text-get-text" title="ibus_text_get_text ()">ibus_text_get_text</a>                  (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> *      <a class="link" href="IBusText.html#ibus-text-get-attributes" title="ibus_text_get_attributes ()">ibus_text_get_attributes</a>            (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusText.html#ibus-text-set-attributes" title="ibus_text_set_attributes ()">ibus_text_set_attributes</a>            (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attrs</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusText.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----<a class="link" href="IBusSerializable.html" title="IBusSerializable">IBusSerializable</a>
+                     +----IBusText
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusText.description"></a><h2>Description</h2>
+<p>
+An IBusText is the main text object in IBus.
+The text is decorated according to associated IBusAttribute,
+e.g. the foreground/background color, underline, and
+applied scope.
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusText.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusText-struct"></a><h3>struct IBusText</h3>
+<pre class="programlisting">struct IBusText {
+    gboolean is_static;
+    gchar  *text;
+    IBusAttrList *attrs;
+};
+</pre>
+<p>
+A text object in IBus.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><span class="type">gboolean</span> <em class="structfield"><code><a name="IBusText-struct.is-static"></a>is_static</code></em>;</span></p></td>
+<td>Whether <em class="parameter"><code>text</code></em> is static, i.e., no need and will not be freed. Only TRUE if IBusText is newed from <a class="link" href="IBusText.html#ibus-text-new-from-static-string" title="ibus_text_new_from_static_string ()"><code class="function">ibus_text_new_from_static_string()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="type">gchar</span> *<em class="structfield"><code><a name="IBusText-struct.text"></a>text</code></em>;</span></p></td>
+<td>The string content of IBusText in UTF-8.</td>
+</tr>
+<tr>
+<td><p><span class="term"><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *<em class="structfield"><code><a name="IBusText-struct.attrs"></a>attrs</code></em>;</span></p></td>
+<td>Associated IBusAttributes.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusTextClass"></a><h3>struct IBusTextClass</h3>
+<pre class="programlisting">struct IBusTextClass {
+    IBusSerializableClass parent;
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-new-from-string"></a><h3>ibus_text_new_from_string ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_text_new_from_string           (<em class="parameter"><code>const <span class="type">gchar</span> *str</code></em>);</pre>
+<p>
+New an IBusText from a string.
+</p>
+<p>
+<em class="parameter"><code>str</code></em> will be duplicated in IBusText, so feel free to free <em class="parameter"><code>str</code></em> after this function.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>str</code></em> :</span></p></td>
+<td>An text string to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusText.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-new-from-ucs4"></a><h3>ibus_text_new_from_ucs4 ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_text_new_from_ucs4             (<em class="parameter"><code>const <span class="type">gunichar</span> *str</code></em>);</pre>
+<p>
+New an IBusText from an UCS-4 encoded string.
+</p>
+<p>
+<em class="parameter"><code>str</code></em> will be duplicated in IBusText, so feel free to free <em class="parameter"><code>str</code></em> after this function.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>str</code></em> :</span></p></td>
+<td>An text string to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusText.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-new-from-static-string"></a><h3>ibus_text_new_from_static_string ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_text_new_from_static_string    (<em class="parameter"><code>const <span class="type">gchar</span> *str</code></em>);</pre>
+<p>
+New an IBusText from a static string.
+</p>
+<p>
+Since <em class="parameter"><code>str</code></em> is a static string which won't be freed.
+This function will NOT duplicate <em class="parameter"><code>str</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>str</code></em> :</span></p></td>
+<td>An text string to be set.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusText.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-new-from-printf"></a><h3>ibus_text_new_from_printf ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_text_new_from_printf           (<em class="parameter"><code>const <span class="type">gchar</span> *fmt</code></em>,
+                                                         <em class="parameter"><code>...</code></em>);</pre>
+<p>
+New an IBusText from a printf expression.
+</p>
+<p>
+The result of printf expression is stored in the new IBusText instance.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fmt</code></em> :</span></p></td>
+<td>printf format string.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em> :</span></p></td>
+<td>arguments for <em class="parameter"><code>fmt</code></em>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusText.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-new-from-unichar"></a><h3>ibus_text_new_from_unichar ()</h3>
+<pre class="programlisting"><a class="link" href="IBusText.html" title="IBusText"><span class="returnvalue">IBusText</span></a> *          ibus_text_new_from_unichar          (<em class="parameter"><code><span class="type">gunichar</span> c</code></em>);</pre>
+<p>
+New an IBusText from a single UCS4-encoded character.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>c</code></em> :</span></p></td>
+<td>A single UCS4-encoded character.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated IBusText.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-append-attribute"></a><h3>ibus_text_append_attribute ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_text_append_attribute          (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> type</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> value</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> start_index</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> end_index</code></em>);</pre>
+<p>
+Append an IBusAttribute for IBusText.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>an IBusText</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>IBusAttributeType for <em class="parameter"><code>text</code></em>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>Value for the type.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>start_index</code></em> :</span></p></td>
+<td>The starting index, inclusive.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>end_index</code></em> :</span></p></td>
+<td>The ending index, exclusive.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-get-length"></a><h3>ibus_text_get_length ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               ibus_text_get_length                (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return number of characters in an IBusText.
+This function is based on <code class="function">g_utf8_strlen()</code>, so unlike <code class="function">strlen()</code>,
+it does not count by bytes but characters instead.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Number of character in <em class="parameter"><code>text</code></em>, not counted by bytes.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-get-is-static"></a><h3>ibus_text_get_is_static ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_text_get_is_static             (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return the is_static in an IBusText.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the is_static in <em class="parameter"><code>text</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-get-text"></a><h3>ibus_text_get_text ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       ibus_text_get_text                  (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return the text in an IBusText. Should not be freed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the text in <em class="parameter"><code>text</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-get-attributes"></a><h3>ibus_text_get_attributes ()</h3>
+<pre class="programlisting"><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="returnvalue">IBusAttrList</span></a> *      ibus_text_get_attributes            (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>);</pre>
+<p>
+Return the attributes in an IBusText. Should not be freed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the attrs in <em class="parameter"><code>text</code></em>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-text-set-attributes"></a><h3>ibus_text_set_attributes ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_text_set_attributes            (<em class="parameter"><code><a class="link" href="IBusText.html" title="IBusText"><span class="type">IBusText</span></a> *text</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusAttrList.html" title="IBusAttrList"><span class="type">IBusAttrList</span></a> *attrs</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>An IBusText.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>attrs</code></em> :</span></p></td>
+<td>An IBusAttrList</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusText.see-also"></a><h2>See Also</h2>
+<a class="link" href="IBusAttribute.html" title="IBusAttribute"><span class="type">IBusAttribute</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

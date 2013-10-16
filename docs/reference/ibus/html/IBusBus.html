@@ -1,0 +1,3047 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IBusBus</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="IBus Reference Manual">
+<link rel="up" href="ch05.html" title="Communication">
+<link rel="prev" href="ch05.html" title="Communication">
+<link rel="next" href="IBusProxy.html" title="IBusProxy">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="ch05.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch05.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">IBus Reference Manual</th>
+<td><a accesskey="n" href="IBusProxy.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#IBusBus.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#IBusBus.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#IBusBus.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#IBusBus.properties" class="shortcut">Properties</a>
+                   | 
+                  <a href="#IBusBus.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="IBusBus"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="IBusBus.top_of_page"></a>IBusBus</span></h2>
+<p>IBusBus — Connect with IBus daemon.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="IBusBus.stability-level"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<a name="IBusBus.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="IBusBus.html#IBusBus-struct" title="struct IBusBus">IBusBus</a>;
+struct              <a class="link" href="IBusBus.html#IBusBusClass" title="struct IBusBusClass">IBusBusClass</a>;
+<a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           <a class="link" href="IBusBus.html#ibus-bus-new" title="ibus_bus_new ()">ibus_bus_new</a>                        (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           <a class="link" href="IBusBus.html#ibus-bus-new-async" title="ibus_bus_new_async ()">ibus_bus_new_async</a>                  (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-is-connected" title="ibus_bus_is_connected ()">ibus_bus_is_connected</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">GDBusConnection</span> *   <a class="link" href="IBusBus.html#ibus-bus-get-connection" title="ibus_bus_get_connection ()">ibus_bus_get_connection</a>             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+const <span class="returnvalue">gchar</span> *       <a class="link" href="IBusBus.html#ibus-bus-hello" title="ibus_bus_hello ()">ibus_bus_hello</a>                      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">guint32</span>             <a class="link" href="IBusBus.html#ibus-bus-request-name" title="ibus_bus_request_name ()">ibus_bus_request_name</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> flags</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-request-name-async" title="ibus_bus_request_name_async ()">ibus_bus_request_name_async</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> flags</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="IBusBus.html#ibus-bus-request-name-async-finish" title="ibus_bus_request_name_async_finish ()">ibus_bus_request_name_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="IBusBus.html#ibus-bus-release-name" title="ibus_bus_release_name ()">ibus_bus_release_name</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-release-name-async" title="ibus_bus_release_name_async ()">ibus_bus_release_name_async</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="IBusBus.html#ibus-bus-release-name-async-finish" title="ibus_bus_release_name_async_finish ()">ibus_bus_release_name_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusBus.html#ibus-bus-list-queued-owners" title="ibus_bus_list_queued_owners ()">ibus_bus_list_queued_owners</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-name-has-owner" title="ibus_bus_name_has_owner ()">ibus_bus_name_has_owner</a>             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-name-has-owner-async" title="ibus_bus_name_has_owner_async ()">ibus_bus_name_has_owner_async</a>       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-name-has-owner-async-finish" title="ibus_bus_name_has_owner_async_finish ()">ibus_bus_name_has_owner_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusBus.html#ibus-bus-list-names" title="ibus_bus_list_names ()">ibus_bus_list_names</a>                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-add-match" title="ibus_bus_add_match ()">ibus_bus_add_match</a>                  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-add-match-async" title="ibus_bus_add_match_async ()">ibus_bus_add_match_async</a>            (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-add-match-async-finish" title="ibus_bus_add_match_async_finish ()">ibus_bus_add_match_async_finish</a>     (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-remove-match" title="ibus_bus_remove_match ()">ibus_bus_remove_match</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-remove-match-async" title="ibus_bus_remove_match_async ()">ibus_bus_remove_match_async</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-remove-match-async-finish" title="ibus_bus_remove_match_async_finish ()">ibus_bus_remove_match_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gchar</span> *             <a class="link" href="IBusBus.html#ibus-bus-get-name-owner" title="ibus_bus_get_name_owner ()">ibus_bus_get_name_owner</a>             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-get-name-owner-async" title="ibus_bus_get_name_owner_async ()">ibus_bus_get_name_owner_async</a>       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gchar</span> *             <a class="link" href="IBusBus.html#ibus-bus-get-name-owner-async-finish" title="ibus_bus_get_name_owner_async_finish ()">ibus_bus_get_name_owner_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-exit" title="ibus_bus_exit ()">ibus_bus_exit</a>                       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> restart</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-exit-async" title="ibus_bus_exit_async ()">ibus_bus_exit_async</a>                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> restart</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-exit-async-finish" title="ibus_bus_exit_async_finish ()">ibus_bus_exit_async_finish</a>          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusBus.html#ibus-bus-create-input-context" title="ibus_bus_create_input_context ()">ibus_bus_create_input_context</a>       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *client_name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-create-input-context-async" title="ibus_bus_create_input_context_async ()">ibus_bus_create_input_context_async</a> (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *client_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  <a class="link" href="IBusBus.html#ibus-bus-create-input-context-async-finish" title="ibus_bus_create_input_context_async_finish ()">ibus_bus_create_input_context_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gchar</span> *             <a class="link" href="IBusBus.html#ibus-bus-current-input-context" title="ibus_bus_current_input_context ()">ibus_bus_current_input_context</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-current-input-context-async" title="ibus_bus_current_input_context_async ()">ibus_bus_current_input_context_async</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gchar</span> *             <a class="link" href="IBusBus.html#ibus-bus-current-input-context-async-finish" title="ibus_bus_current_input_context_async_finish ()">ibus_bus_current_input_context_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-register-component" title="ibus_bus_register_component ()">ibus_bus_register_component</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-register-component-async" title="ibus_bus_register_component_async ()">ibus_bus_register_component_async</a>   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-register-component-async-finish" title="ibus_bus_register_component_async_finish ()">ibus_bus_register_component_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusBus.html#ibus-bus-list-engines" title="ibus_bus_list_engines ()">ibus_bus_list_engines</a>               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-list-engines-async" title="ibus_bus_list_engines_async ()">ibus_bus_list_engines_async</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusBus.html#ibus-bus-list-engines-async-finish" title="ibus_bus_list_engines_async_finish ()">ibus_bus_list_engines_async_finish</a>  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusBus.html#ibus-bus-list-active-engines" title="ibus_bus_list_active_engines ()">ibus_bus_list_active_engines</a>        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-list-active-engines-async" title="ibus_bus_list_active_engines_async ()">ibus_bus_list_active_engines_async</a>  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="IBusBus.html#ibus-bus-list-active-engines-async-finish" title="ibus_bus_list_active_engines_async_finish ()">ibus_bus_list_active_engines_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> **   <a class="link" href="IBusBus.html#ibus-bus-get-engines-by-names" title="ibus_bus_get_engines_by_names ()">ibus_bus_get_engines_by_names</a>       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> * const *names</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout" title="ibus_bus_get_use_sys_layout ()">ibus_bus_get_use_sys_layout</a>         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout-async" title="ibus_bus_get_use_sys_layout_async ()">ibus_bus_get_use_sys_layout_async</a>   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout-async-finish" title="ibus_bus_get_use_sys_layout_async_finish ()">ibus_bus_get_use_sys_layout_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine" title="ibus_bus_get_use_global_engine ()">ibus_bus_get_use_global_engine</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine-async" title="ibus_bus_get_use_global_engine_async ()">ibus_bus_get_use_global_engine_async</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine-async-finish" title="ibus_bus_get_use_global_engine_async_finish ()">ibus_bus_get_use_global_engine_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled" title="ibus_bus_is_global_engine_enabled ()">ibus_bus_is_global_engine_enabled</a>   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled-async" title="ibus_bus_is_global_engine_enabled_async ()">ibus_bus_is_global_engine_enabled_async</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled-async-finish" title="ibus_bus_is_global_engine_enabled_async_finish ()">ibus_bus_is_global_engine_enabled_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    <a class="link" href="IBusBus.html#ibus-bus-get-global-engine" title="ibus_bus_get_global_engine ()">ibus_bus_get_global_engine</a>          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-get-global-engine-async" title="ibus_bus_get_global_engine_async ()">ibus_bus_get_global_engine_async</a>    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    <a class="link" href="IBusBus.html#ibus-bus-get-global-engine-async-finish" title="ibus_bus_get_global_engine_async_finish ()">ibus_bus_get_global_engine_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-set-global-engine" title="ibus_bus_set_global_engine ()">ibus_bus_set_global_engine</a>          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *global_engine</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-set-global-engine-async" title="ibus_bus_set_global_engine_async ()">ibus_bus_set_global_engine_async</a>    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *global_engine</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-set-global-engine-async-finish" title="ibus_bus_set_global_engine_async_finish ()">ibus_bus_set_global_engine_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-set-watch-dbus-signal" title="ibus_bus_set_watch_dbus_signal ()">ibus_bus_set_watch_dbus_signal</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> watch</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-set-watch-ibus-signal" title="ibus_bus_set_watch_ibus_signal ()">ibus_bus_set_watch_ibus_signal</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> watch</code></em>);
+<a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        <a class="link" href="IBusBus.html#ibus-bus-get-config" title="ibus_bus_get_config ()">ibus_bus_get_config</a>                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-preload-engines" title="ibus_bus_preload_engines ()">ibus_bus_preload_engines</a>            (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> * const *names</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-preload-engines-async" title="ibus_bus_preload_engines_async ()">ibus_bus_preload_engines_async</a>      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> * const *names</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-preload-engines-async-finish" title="ibus_bus_preload_engines_async_finish ()">ibus_bus_preload_engines_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">GVariant</span> *          <a class="link" href="IBusBus.html#ibus-bus-get-ibus-property" title="ibus_bus_get_ibus_property ()">ibus_bus_get_ibus_property</a>          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-get-ibus-property-async" title="ibus_bus_get_ibus_property_async ()">ibus_bus_get_ibus_property_async</a>    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">GVariant</span> *          <a class="link" href="IBusBus.html#ibus-bus-get-ibus-property-async-finish" title="ibus_bus_get_ibus_property_async_finish ()">ibus_bus_get_ibus_property_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-set-ibus-property" title="ibus_bus_set_ibus_property ()">ibus_bus_set_ibus_property</a>          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="IBusBus.html#ibus-bus-set-ibus-property-async" title="ibus_bus_set_ibus_property_async ()">ibus_bus_set_ibus_property_async</a>    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="IBusBus.html#ibus-bus-set-ibus-property-async-finish" title="ibus_bus_set_ibus_property_async_finish ()">ibus_bus_set_ibus_property_async_finish</a>
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusBus.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----<a class="link" href="IBusObject.html" title="IBusObject">IBusObject</a>
+               +----IBusBus
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusBus.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusBus.html#IBusBus--connect-async" title='The "connect-async" property'>connect-async</a>"            <span class="type">gboolean</span>              : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusBus.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="IBusBus.html#IBusBus-connected" title='The "connected" signal'>connected</a>"                                      : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusBus.html#IBusBus-disconnected" title='The "disconnected" signal'>disconnected</a>"                                   : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusBus.html#IBusBus-global-engine-changed" title='The "global-engine-changed" signal'>global-engine-changed</a>"                          : <code class="literal">Run Last</code>
+  "<a class="link" href="IBusBus.html#IBusBus-name-owner-changed" title='The "name-owner-changed" signal'>name-owner-changed</a>"                             : <code class="literal">Run Last</code>
+</pre>
+</div>
+<div class="refsect1">
+<a name="IBusBus.description"></a><h2>Description</h2>
+<p>
+An IBusBus connects with IBus daemon.
+</p>
+</div>
+<div class="refsect1">
+<a name="IBusBus.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="IBusBus-struct"></a><h3>struct IBusBus</h3>
+<pre class="programlisting">struct IBusBus;</pre>
+<p>
+An opaque data type representing IBus bus (daemon communication) status.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBusClass"></a><h3>struct IBusBusClass</h3>
+<pre class="programlisting">struct IBusBusClass {
+    IBusObjectClass parent;
+    /* class members */
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-new"></a><h3>ibus_bus_new ()</h3>
+<pre class="programlisting"><a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           ibus_bus_new                        (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+New an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance, and the instance is not floating.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-new-async"></a><h3>ibus_bus_new_async ()</h3>
+<pre class="programlisting"><a class="link" href="IBusBus.html" title="IBusBus"><span class="returnvalue">IBusBus</span></a> *           ibus_bus_new_async                  (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+New an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance. The instance will asynchronously connect to the IBus
+daemon.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A newly allocated <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance, and the instance is not floating.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-is-connected"></a><h3>ibus_bus_is_connected ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_is_connected               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Return <code class="literal">TRUE</code> if <em class="parameter"><code>bus</code></em> is connected to IBus daemon.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if <em class="parameter"><code>bus</code></em> is connected, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-connection"></a><h3>ibus_bus_get_connection ()</h3>
+<pre class="programlisting"><span class="returnvalue">GDBusConnection</span> *   ibus_bus_get_connection             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Return <span class="type">GDBusConnection</span> of an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <span class="type">GDBusConnection</span> of an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> instance. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-hello"></a><h3>ibus_bus_hello ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       ibus_bus_hello                      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+This function sends a "HELLO" message to DBus daemon,
+which replies the unique name of current IBus process.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The unique name of IBus process in DBus.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-request-name"></a><h3>ibus_bus_request_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint32</span>             ibus_bus_request_name               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint32</span> flags</code></em>);</pre>
+<p>
+Request a name from IBus daemon synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>the IBusBus instance to be processed.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be requested.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
+<td>IBusBusNameFlag.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>0 if failed; IBusBusRequestNameReply otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-request-name-async"></a><h3>ibus_bus_request_name_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_request_name_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> flags</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Request a name from IBus daemon asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be requested.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>flags</code></em> :</span></p></td>
+<td>Flags (FixMe).</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied or <code class="literal">NULL</code>
+if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-request-name-async-finish"></a><h3>ibus_bus_request_name_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               ibus_bus_request_name_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-request-name-async" title="ibus_bus_request_name_async ()"><code class="function">ibus_bus_request_name_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-request-name-async" title="ibus_bus_request_name_async ()"><code class="function">ibus_bus_request_name_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>0 if failed; positive number otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-release-name"></a><h3>ibus_bus_release_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               ibus_bus_release_name               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Release a name to IBus daemon synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be released.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>0 if failed; positive number otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-release-name-async"></a><h3>ibus_bus_release_name_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_release_name_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Release a name to IBus daemon asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be released.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-release-name-async-finish"></a><h3>ibus_bus_release_name_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               ibus_bus_release_name_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-release-name-async" title="ibus_bus_release_name_async ()"><code class="function">ibus_bus_release_name_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-release-name-async" title="ibus_bus_release_name_async ()"><code class="function">ibus_bus_release_name_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>0 if failed; positive number otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-queued-owners"></a><h3>ibus_bus_list_queued_owners ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_bus_list_queued_owners         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Lists the unique bus names of connections currently queued for a bus name.
+</p>
+<p>
+FIXME add an asynchronous version.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An IBusBus.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be queried.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The unique bus names of connections currently queued for <em class="parameter"><code>name</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-name-has-owner"></a><h3>ibus_bus_name_has_owner ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_name_has_owner             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Checks whether the name has owner synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be checked.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the name has owner, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-name-has-owner-async"></a><h3>ibus_bus_name_has_owner_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_name_has_owner_async       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Checks whether the name has owner asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name to be checked.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-name-has-owner-async-finish"></a><h3>ibus_bus_name_has_owner_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_name_has_owner_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-name-has-owner-async" title="ibus_bus_name_has_owner_async ()"><code class="function">ibus_bus_name_has_owner_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-name-has-owner-async" title="ibus_bus_name_has_owner_async ()"><code class="function">ibus_bus_name_has_owner_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the name has owner, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-names"></a><h3>ibus_bus_list_names ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_bus_list_names                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Return lists that attached to <em class="parameter"><code>bus</code></em>.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>[FixMe] Not implemented yet, only return NULL.</p>
+</div>
+<p>
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Note</h3>
+<p>[FixMe] Add async version.</p>
+</div>
+<p>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Lists that attached to <em class="parameter"><code>bus</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-add-match"></a><h3>ibus_bus_add_match ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_add_match                  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>);</pre>
+<p>
+Add a match rule to an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
+<td>Match rule.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the rule is added. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-add-match-async"></a><h3>ibus_bus_add_match_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_add_match_async            (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Add a match rule to an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
+<td>Match rule.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-add-match-async-finish"></a><h3>ibus_bus_add_match_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_add_match_async_finish     (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-add-match-async" title="ibus_bus_add_match_async ()"><code class="function">ibus_bus_add_match_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-add-match-async" title="ibus_bus_add_match_async ()"><code class="function">ibus_bus_add_match_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the rule is added. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-remove-match"></a><h3>ibus_bus_remove_match ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_remove_match               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>);</pre>
+<p>
+Remove a match rule to an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
+<td>Match rule.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the rule is removed. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-remove-match-async"></a><h3>ibus_bus_remove_match_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_remove_match_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *rule</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Remove a match rule to an IBusBus asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rule</code></em> :</span></p></td>
+<td>Match rule.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-remove-match-async-finish"></a><h3>ibus_bus_remove_match_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_remove_match_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-remove-match-async" title="ibus_bus_remove_match_async ()"><code class="function">ibus_bus_remove_match_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-remove-match-async" title="ibus_bus_remove_match_async ()"><code class="function">ibus_bus_remove_match_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the rule is removed. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-name-owner"></a><h3>ibus_bus_get_name_owner ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *             ibus_bus_get_name_owner             (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>
+Return the name owner synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Owner of the name. The returned value must be freed with <code class="function">g_free()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-name-owner-async"></a><h3>ibus_bus_get_name_owner_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_name_owner_async       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Return the name owner asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>Name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-name-owner-async-finish"></a><h3>ibus_bus_get_name_owner_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *             ibus_bus_get_name_owner_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-get-name-owner-async" title="ibus_bus_get_name_owner_async ()"><code class="function">ibus_bus_get_name_owner_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-get-name-owner-async" title="ibus_bus_get_name_owner_async ()"><code class="function">ibus_bus_get_name_owner_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Owner of the name. The returned value must be freed with <code class="function">g_free()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-exit"></a><h3>ibus_bus_exit ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_exit                       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> restart</code></em>);</pre>
+<p>
+Exit or restart ibus-daemon synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restart</code></em> :</span></p></td>
+<td>Whether restarting the ibus.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the "Exit" call is suceeded, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-exit-async"></a><h3>ibus_bus_exit_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_exit_async                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> restart</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Exit or restart ibus-daemon asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>restart</code></em> :</span></p></td>
+<td>Whether restarting the ibus.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-exit-async-finish"></a><h3>ibus_bus_exit_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_exit_async_finish          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-exit-async" title="ibus_bus_exit_async ()"><code class="function">ibus_bus_exit_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-exit-async" title="ibus_bus_exit_async ()"><code class="function">ibus_bus_exit_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the "Exit" call is suceeded, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-create-input-context"></a><h3>ibus_bus_create_input_context ()</h3>
+<pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_bus_create_input_context       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *client_name</code></em>);</pre>
+<p>
+Create an input context for client synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>client_name</code></em> :</span></p></td>
+<td>Name of client.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An newly allocated <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> if the
+"CreateInputContext" call is suceeded, <code class="literal">NULL</code> otherwise. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-create-input-context-async"></a><h3>ibus_bus_create_input_context_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_create_input_context_async (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *client_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Create an input context for client asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>client_name</code></em> :</span></p></td>
+<td>Name of client.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied.
+It should not be <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-create-input-context-async-finish"></a><h3>ibus_bus_create_input_context_async_finish ()</h3>
+<pre class="programlisting"><a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="returnvalue">IBusInputContext</span></a> *  ibus_bus_create_input_context_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-create-input-context-async" title="ibus_bus_create_input_context_async ()"><code class="function">ibus_bus_create_input_context_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-create-input-context-async" title="ibus_bus_create_input_context_async ()"><code class="function">ibus_bus_create_input_context_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An newly allocated <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> if the
+"CreateInputContext" call is suceeded, <code class="literal">NULL</code> otherwise. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-current-input-context"></a><h3>ibus_bus_current_input_context ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *             ibus_bus_current_input_context      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Get the current focused input context synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The named of currently focued <a class="link" href="IBusInputContext.html" title="IBusInputContext"><span class="type">IBusInputContext</span></a> if the
+"CurrentInputContext" call suceeded, <code class="literal">NULL</code> otherwise. The return
+value must be freed with <code class="function">g_free()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-current-input-context-async"></a><h3>ibus_bus_current_input_context_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_current_input_context_async
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Get the current focused input context asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-current-input-context-async-finish"></a><h3>ibus_bus_current_input_context_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *             ibus_bus_current_input_context_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-current-input-context-async" title="ibus_bus_current_input_context_async ()"><code class="function">ibus_bus_current_input_context_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-current-input-context-async" title="ibus_bus_current_input_context_async ()"><code class="function">ibus_bus_current_input_context_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The named of currently focued IBusInputContext if the
+"CurrentInputContext" call suceeded, <code class="literal">NULL</code> otherwise. The return
+value must be freed with <code class="function">g_free()</code>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-register-component"></a><h3>ibus_bus_register_component ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_register_component         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>);</pre>
+<p>
+Register a componet to an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>A input engine component.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the "RegisterComponent" call is suceeded, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-register-component-async"></a><h3>ibus_bus_register_component_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_register_component_async   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="IBusComponent.html" title="IBusComponent"><span class="type">IBusComponent</span></a> *component</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Register a componet to an <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>component</code></em> :</span></p></td>
+<td>A input engine component.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-register-component-async-finish"></a><h3>ibus_bus_register_component_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_register_component_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-register-component-async" title="ibus_bus_register_component_async ()"><code class="function">ibus_bus_register_component_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-register-component-async" title="ibus_bus_register_component_async ()"><code class="function">ibus_bus_register_component_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the "RegisterComponent" call is suceeded, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-engines"></a><h3>ibus_bus_list_engines ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_bus_list_engines               (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+List engines synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A List of engines. <span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-engines-async"></a><h3>ibus_bus_list_engines_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_list_engines_async         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+List engines asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied or <code class="literal">NULL</code>
+if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-engines-async-finish"></a><h3>ibus_bus_list_engines_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_bus_list_engines_async_finish  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-list-engines-async" title="ibus_bus_list_engines_async ()"><code class="function">ibus_bus_list_engines_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-list-engines-async" title="ibus_bus_list_engines_async ()"><code class="function">ibus_bus_list_engines_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A List of engines. <span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-active-engines"></a><h3>ibus_bus_list_active_engines ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_bus_list_active_engines        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_list_active_engines</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Read dconf value
+/desktop/ibus/general/preload-engines instead.</p>
+</div>
+<p>
+List active engines synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A List of active engines. <span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-active-engines-async"></a><h3>ibus_bus_list_active_engines_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_list_active_engines_async  (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_list_active_engines_async</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Read dconf value
+/desktop/ibus/general/preload-engines instead.</p>
+</div>
+<p>
+List active engines asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied or <code class="literal">NULL</code>
+if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-list-active-engines-async-finish"></a><h3>ibus_bus_list_active_engines_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             ibus_bus_list_active_engines_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_list_active_engines_async_finish</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Read dconf value
+/desktop/ibus/general/preload-engines instead.</p>
+</div>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-list-active-engines-async" title="ibus_bus_list_active_engines_async ()"><code class="function">ibus_bus_list_active_engines_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-list-active-engines-async" title="ibus_bus_list_active_engines_async ()"><code class="function">ibus_bus_list_active_engines_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A List of active engines. <span class="annotation">[<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> IBusEngineDesc]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-engines-by-names"></a><h3>ibus_bus_get_engines_by_names ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> **   ibus_bus_get_engines_by_names       (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> * const *names</code></em>);</pre>
+<p>
+Get engines by given names synchronously. If some engine names do not exist, this function
+will simplly ignore them, and return rest of engines.
+TODO(penghuang): add asynchronous version
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>names</code></em> :</span></p></td>
+<td>A <code class="literal">NULL</code>-terminated array of names. <span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A <code class="literal">NULL</code>-terminated array of engines. <span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-use-sys-layout"></a><h3>ibus_bus_get_use_sys_layout ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_get_use_sys_layout         (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_get_use_sys_layout</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Read dconf value
+/desktop/ibus/general/use_system_keyboard_layout instead.</p>
+</div>
+<p>
+Check if the bus's "use_sys_layout" option is enabled or not synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if "use_sys_layout" option is enabled.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-use-sys-layout-async"></a><h3>ibus_bus_get_use_sys_layout_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_use_sys_layout_async   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_get_use_sys_layout_async</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Read dconf value
+/desktop/ibus/general/use_system_keyboard_layout instead.</p>
+</div>
+<p>
+Check if the bus's "use_sys_layout" option is enabled or not asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-use-sys-layout-async-finish"></a><h3>ibus_bus_get_use_sys_layout_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_get_use_sys_layout_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_get_use_sys_layout_async_finish</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Read dconf value
+/desktop/ibus/general/use_system_keyboard_layout instead.</p>
+</div>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout-async" title="ibus_bus_get_use_sys_layout_async ()"><code class="function">ibus_bus_get_use_sys_layout_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-get-use-sys-layout-async" title="ibus_bus_get_use_sys_layout_async ()"><code class="function">ibus_bus_get_use_sys_layout_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if "use_sys_layout" option is enabled.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-use-global-engine"></a><h3>ibus_bus_get_use_global_engine ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_get_use_global_engine      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_get_use_global_engine</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Currently global engine is always used.</p>
+</div>
+<p>
+Check if the bus's "use_global_engine" option is enabled or not synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>TRUE if "use_global_engine" option is enabled.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-use-global-engine-async"></a><h3>ibus_bus_get_use_global_engine_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_use_global_engine_async
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_get_use_global_engine_async</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Currently global engine is always used.</p>
+</div>
+<p>
+Check if the bus's "use_global_engine" option is enabled or not asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-use-global-engine-async-finish"></a><h3>ibus_bus_get_use_global_engine_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_get_use_global_engine_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_get_use_global_engine_async_finish</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Currently global engine is always used.</p>
+</div>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine-async" title="ibus_bus_get_use_global_engine_async ()"><code class="function">ibus_bus_get_use_global_engine_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-get-use-global-engine-async" title="ibus_bus_get_use_global_engine_async ()"><code class="function">ibus_bus_get_use_global_engine_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if "use_global_engine" option is enabled.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-is-global-engine-enabled"></a><h3>ibus_bus_is_global_engine_enabled ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_is_global_engine_enabled   (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_is_global_engine_enabled</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Probably this would be used for Chrome OS only.
+Currently global engine is always used and <a class="link" href="IBusBus.html#ibus-bus-get-global-engine" title="ibus_bus_get_global_engine ()"><code class="function">ibus_bus_get_global_engine()</code></a>
+returns NULL until the first global engine is assigned.
+You can use <a class="link" href="ibus-ibusshare.html#ibus-set-log-handler" title="ibus_set_log_handler ()"><code class="function">ibus_set_log_handler()</code></a> to disable a warning when
+<a class="link" href="IBusBus.html#ibus-bus-get-global-engine" title="ibus_bus_get_global_engine ()"><code class="function">ibus_bus_get_global_engine()</code></a> returns NULL.</p>
+</div>
+<p>
+Check if the current global engine is enabled or not synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the current global engine is enabled.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-is-global-engine-enabled-async"></a><h3>ibus_bus_is_global_engine_enabled_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_is_global_engine_enabled_async
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_is_global_engine_enabled_async</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Probably this would be used for Chrome OS only.
+Currently global engine is always used and <a class="link" href="IBusBus.html#ibus-bus-get-global-engine" title="ibus_bus_get_global_engine ()"><code class="function">ibus_bus_get_global_engine()</code></a></p>
+</div>
+<p>
+Check if the current global engine is enabled or not asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-is-global-engine-enabled-async-finish"></a><h3>ibus_bus_is_global_engine_enabled_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_is_global_engine_enabled_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+<h3 class="title">Warning</h3>
+<p><code class="literal">ibus_bus_is_global_engine_enabled_async_finish</code> has been deprecated since version 1.5.3 and should not be used in newly-written code. Probably this would be used for Chrome OS only.
+Currently global engine is always used and <a class="link" href="IBusBus.html#ibus-bus-get-global-engine" title="ibus_bus_get_global_engine ()"><code class="function">ibus_bus_get_global_engine()</code></a>
+returns NULL until the first global engine is assigned.
+You can use <a class="link" href="ibus-ibusshare.html#ibus-set-log-handler" title="ibus_set_log_handler ()"><code class="function">ibus_set_log_handler()</code></a> to disable a warning when
+<a class="link" href="IBusBus.html#ibus-bus-get-global-engine" title="ibus_bus_get_global_engine ()"><code class="function">ibus_bus_get_global_engine()</code></a> returns NULL.</p>
+</div>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled-async" title="ibus_bus_is_global_engine_enabled_async ()"><code class="function">ibus_bus_is_global_engine_enabled_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-is-global-engine-enabled-async" title="ibus_bus_is_global_engine_enabled_async ()"><code class="function">ibus_bus_is_global_engine_enabled_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the current global engine is enabled.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-global-engine"></a><h3>ibus_bus_get_global_engine ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_bus_get_global_engine          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Get the description of current global engine synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The description of current global engine,
+or <code class="literal">NULL</code> if there is no global engine. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-global-engine-async"></a><h3>ibus_bus_get_global_engine_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_global_engine_async    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Get the description of current global engine asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied or <code class="literal">NULL</code>
+if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-global-engine-async-finish"></a><h3>ibus_bus_get_global_engine_async_finish ()</h3>
+<pre class="programlisting"><a class="link" href="IBusEngineDesc.html" title="IBusEngineDesc"><span class="returnvalue">IBusEngineDesc</span></a> *    ibus_bus_get_global_engine_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-get-global-engine-async-finish" title="ibus_bus_get_global_engine_async_finish ()"><code class="function">ibus_bus_get_global_engine_async_finish()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-get-global-engine-async-finish" title="ibus_bus_get_global_engine_async_finish ()"><code class="function">ibus_bus_get_global_engine_async_finish()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The description of current global engine,
+or <code class="literal">NULL</code> if there is no global engine. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-global-engine"></a><h3>ibus_bus_set_global_engine ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_set_global_engine          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *global_engine</code></em>);</pre>
+<p>
+Set current global engine synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>global_engine</code></em> :</span></p></td>
+<td>A new engine name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the global engine was set successfully.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-global-engine-async"></a><h3>ibus_bus_set_global_engine_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_global_engine_async    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *global_engine</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Set current global engine asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>global_engine</code></em> :</span></p></td>
+<td>A new engine name.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-global-engine-async-finish"></a><h3>ibus_bus_set_global_engine_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_set_global_engine_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-set-global-engine-async" title="ibus_bus_set_global_engine_async ()"><code class="function">ibus_bus_set_global_engine_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-set-global-engine-async" title="ibus_bus_set_global_engine_async ()"><code class="function">ibus_bus_set_global_engine_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if no IPC errros. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-watch-dbus-signal"></a><h3>ibus_bus_set_watch_dbus_signal ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_watch_dbus_signal      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> watch</code></em>);</pre>
+<p>
+Start or stop watching the NameOwnerChanged DBus signal.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>watch</code></em> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if you want ibusbus to emit "name-owner-changed" signal when
+ibus-daemon emits the NameOwnerChanged DBus signal.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-watch-ibus-signal"></a><h3>ibus_bus_set_watch_ibus_signal ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_watch_ibus_signal      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">gboolean</span> watch</code></em>);</pre>
+<p>
+Start or stop watching the GlobalEngineChanged IBus signal.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>watch</code></em> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if you want ibusbus to emit "global-engine-changed" signal when
+ibus-daemon emits the GlobalEngineChanged IBus signal.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-config"></a><h3>ibus_bus_get_config ()</h3>
+<pre class="programlisting"><a class="link" href="IBusConfig.html" title="IBusConfig"><span class="returnvalue">IBusConfig</span></a> *        ibus_bus_get_config                 (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>);</pre>
+<p>
+Get the config instance from <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An <a class="link" href="IBusConfig.html" title="IBusConfig"><span class="type">IBusConfig</span></a> object which is configurable with
+<em class="parameter"><code>bus</code></em>. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-preload-engines"></a><h3>ibus_bus_preload_engines ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_preload_engines            (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> * const *names</code></em>);</pre>
+<p>
+Start bus components by engine names synchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>names</code></em> :</span></p></td>
+<td>A <code class="literal">NULL</code>-terminated array of engine names. <span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if components start. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-preload-engines-async"></a><h3>ibus_bus_preload_engines_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_preload_engines_async      (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> * const *names</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Start bus components by engine names asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>names</code></em> :</span></p></td>
+<td>A <code class="literal">NULL</code>-terminated array of engine names. <span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-preload-engines-async-finish"></a><h3>ibus_bus_preload_engines_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_preload_engines_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-preload-engines-async" title="ibus_bus_preload_engines_async ()"><code class="function">ibus_bus_preload_engines_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<a class="link" href="IBusBus.html#ibus-bus-preload-engines-async" title="ibus_bus_preload_engines_async ()"><code class="function">ibus_bus_preload_engines_async()</code></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if component starts. <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-ibus-property"></a><h3>ibus_bus_get_ibus_property ()</h3>
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *          ibus_bus_get_ibus_property          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>);</pre>
+<p>
+Get org.freedesktop.DBus.Properties.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>property_name</code></em> :</span></p></td>
+<td>property name in org.freedesktop.DBus.Properties.Get</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The value in org.freedesktop.DBus.Properties.Get
+The returned value must be freed with <code class="function">g_variant_unref()</code>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-ibus-property-async"></a><h3>ibus_bus_get_ibus_property_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_get_ibus_property_async    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Get org.freedesktop.DBus.Properties asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>property_name</code></em> :</span></p></td>
+<td>property name in org.freedesktop.DBus.Properties.Get</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-get-ibus-property-async-finish"></a><h3>ibus_bus_get_ibus_property_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">GVariant</span> *          ibus_bus_get_ibus_property_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-get-ibus-property-async" title="ibus_bus_get_ibus_property_async ()"><code class="function">ibus_bus_get_ibus_property_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<code class="function">ibus_bus_get_property_async()</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The value in org.freedesktop.DBus.Properties.Get
+The returned value must be freed with <code class="function">g_variant_unref()</code>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-ibus-property"></a><h3>ibus_bus_set_ibus_property ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_ibus_property          (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>);</pre>
+<p>
+Set org.freedesktop.DBus.Properties.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>property_name</code></em> :</span></p></td>
+<td>property name in org.freedesktop.DBus.Properties.Set</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>value in org.freedesktop.DBus.Properties.Set</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-ibus-property-async"></a><h3>ibus_bus_set_ibus_property_async ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                ibus_bus_set_ibus_property_async    (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *property_name</code></em>,
+                                                         <em class="parameter"><code><span class="type">GVariant</span> *value</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> timeout_msec</code></em>,
+                                                         <em class="parameter"><code><span class="type">GCancellable</span> *cancellable</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncReadyCallback</span> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+Set org.freedesktop.DBus.Properties asynchronously.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>property_name</code></em> :</span></p></td>
+<td>property name in org.freedesktop.DBus.Properties.Set</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>value</code></em> :</span></p></td>
+<td>value in org.freedesktop.DBus.Properties.Set</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>timeout_msec</code></em> :</span></p></td>
+<td>The timeout in milliseconds or -1 to use the default timeout.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cancellable</code></em> :</span></p></td>
+<td>A <span class="type">GCancellable</span> or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncReadyCallback</span> to call when the request is satisfied
+or <code class="literal">NULL</code> if you don't care about the result of the method invocation.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The data to pass to callback.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="ibus-bus-set-ibus-property-async-finish"></a><h3>ibus_bus_set_ibus_property_async_finish ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            ibus_bus_set_ibus_property_async_finish
+                                                        (<em class="parameter"><code><a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus</code></em>,
+                                                         <em class="parameter"><code><span class="type">GAsyncResult</span> *res</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Finishes an operation started with <a class="link" href="IBusBus.html#ibus-bus-set-ibus-property-async" title="ibus_bus_set_ibus_property_async ()"><code class="function">ibus_bus_set_ibus_property_async()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>An <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>res</code></em> :</span></p></td>
+<td>A <span class="type">GAsyncResult</span> obtained from the <span class="type">GAsyncReadyCallback</span> passed to
+<code class="function">ibus_bus_set_property_async()</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return location for error or <code class="literal">NULL</code>.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if property is set with async. <code class="literal">FALSE</code> failed.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusBus.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="IBusBus--connect-async"></a><h3>The <code class="literal">"connect-async"</code> property</h3>
+<pre class="programlisting">  "connect-async"            <span class="type">gboolean</span>              : Read / Write / Construct Only</pre>
+<p>
+Whether the <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object should connect asynchronously to the bus.
+</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="IBusBus.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="IBusBus-connected"></a><h3>The <code class="literal">"connected"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
+                                                        <span class="type">gpointer</span> user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> is connected to ibus-daemon.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBus-disconnected"></a><h3>The <code class="literal">"disconnected"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
+                                                        <span class="type">gpointer</span> user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> is disconnected from ibus-daemon.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBus-global-engine-changed"></a><h3>The <code class="literal">"global-engine-changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
+                                                        <span class="type">gchar</span>   *name,
+                                                        <span class="type">gpointer</span> user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when global engine is changed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>The name of the new global engine.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="IBusBus-name-owner-changed"></a><h3>The <code class="literal">"name-owner-changed"</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                user_function                      (<a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> *bus,
+                                                        <span class="type">gchar</span>   *name,
+                                                        <span class="type">gchar</span>   *old_owner,
+                                                        <span class="type">gchar</span>   *new_owner,
+                                                        <span class="type">gpointer</span> user_data)      : <code class="literal">Run Last</code></pre>
+<p>
+Emitted when D-Bus name owner is changed.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>bus</code></em> :</span></p></td>
+<td>The <a class="link" href="IBusBus.html" title="IBusBus"><span class="type">IBusBus</span></a> object which recevied the signal</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>name</code></em> :</span></p></td>
+<td>The name which ower is changed.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>old_owner</code></em> :</span></p></td>
+<td>The unique bus name of the old owner.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>new_owner</code></em> :</span></p></td>
+<td>The unique bus name of the new owner.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>
