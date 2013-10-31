@@ -111,10 +111,7 @@ ibus_get_socket_path (void)
             display = g_strdup (_display);
         }
 
-        if (display == NULL) {
-            g_warning ("DISPLAY is empty! We use default DISPLAY (:0.0)");
-        }
-        else {
+        if (display != NULL) {
             p = display;
             hostname = display;
             for (; *p != ':' && *p != '\0'; p++);
