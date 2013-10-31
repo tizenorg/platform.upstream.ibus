@@ -166,7 +166,7 @@ int get_set_engine(string[] argv) {
         return Posix.EXIT_FAILURE;
     }
 
-    return exec_setxkbmap(desc);
+    return Posix.EXIT_SUCCESS; /*exec_setxkbmap(desc);*/
 }
 
 int message_watch(string[] argv) {
