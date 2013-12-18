@@ -18,6 +18,7 @@ BuildRequires:  iso-codes-devel
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pygobject-devel
+BuildRequires:  gobject-introspection-devel
 BuildRequires:  vala
 
 Requires:   %{name}-libs = %{version}-%{release}
@@ -42,6 +43,7 @@ This package contains the libraries for IBus
 Summary:    Development tools for IBus
 Group:      Development/Libraries
 Requires:   %{name} = %{version}-%{release}
+Requires:   %{name}-libs = %{version}-%{release}
 Requires:   glib2-devel
 Requires:   dbus-devel
 
@@ -76,7 +78,8 @@ OPTIONS="--disable-static \
          --disable-dconf \
          --enable-python-library \
          --disable-ui \
-         --disable-libnotify"
+         --disable-libnotify \
+         --enable-introspection"
 
 %configure $OPTIONS
 
@@ -136,12 +139,14 @@ touch --no-create %{_datadir}/icons/hicolor || :
 %files libs
 %defattr(-,root,root,-)
 %{_libdir}/libibus-1.0.so.*
+%{_libdir}/girepository-1.0/IBus-1.0.typelib
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
+%{_datadir}/gir-1.0/IBus-1.0.gir
 
 %files devel-docs
 %defattr(-,root,root,-)
