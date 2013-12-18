@@ -1,3 +1,7 @@
+* Wed Dec 18 2013 Eduardo Lima (Etrunko) <eduardo.lima@intel.com> submit/tizen/20131105.222728@362b558
+- Added manifest file for packages
+- Enable gobject introspection
+
 * Thu Oct 31 2013 Eduardo Lima (Etrunko) <eduardo.lima@intel.com> upstream/1.5.4@5b766ee
 - Remove X11-related warning message
 - Remove call for setxkbmap command when changing engines

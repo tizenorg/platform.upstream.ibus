@@ -1,12 +1,13 @@
 # Build flags
 Name:       ibus
 Version:    1.5.4
-Release:    1
+Release:    2
 Summary:    Intelligent Input Bus for Linux OS
 License:    LGPL-2.0+
 Group:      System/Libraries
 URL:        http://code.google.com/p/ibus/
 Source0:    http://ibus.googlecode.com/files/%{name}-%{version}.tar.gz
+Source1001: ibus.manifest
 
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
@@ -62,6 +63,8 @@ The ibus-devel-docs package contains developer documentation for IBus
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
+
 
 %build
 
@@ -121,6 +124,7 @@ touch --no-create %{_datadir}/icons/hicolor || :
 %postun libs -p /sbin/ldconfig
 
 %files -f %{name}10.lang
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING README
 %dir %{python_sitelib}/ibus
@@ -137,11 +141,13 @@ touch --no-create %{_datadir}/icons/hicolor || :
 
 
 %files libs
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_libdir}/libibus-1.0.so.*
 %{_libdir}/girepository-1.0/IBus-1.0.typelib
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
