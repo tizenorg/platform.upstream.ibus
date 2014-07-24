@@ -1,7 +1,6 @@
-# Build flags
 Name:       ibus
 Version:    1.5.4
-Release:    2
+Release:    0
 Summary:    Intelligent Input Bus for Linux OS
 License:    LGPL-2.0+
 Group:      System/Libraries
@@ -51,53 +50,40 @@ Requires:   dbus-devel
 %description devel
 The ibus-devel package contains the header files for IBus
 
-%package devel-docs
-Summary:    Developer documents for IBus
-Group:      Development/Libraries
-Requires:   %{name} = %{version}-%{release}
-Requires:   gtk-doc
-
-%description devel-docs
-The ibus-devel-docs package contains developer documentation for IBus
-
-
 %prep
 %setup -q
 cp %{SOURCE1001} .
 
-
 %build
+%configure --disable-static \
+           --disable-tests \
+           --disable-gtk2 \
+           --disable-gtk3 \
+           --disable-xim \
+           --enable-wayland \
+           --disable-vala \
+           --disable-gtk-doc \
+           --disable-gconf \
+           --disable-setup \
+           --disable-dconf \
+           --enable-python-library \
+           --disable-ui \
+           --disable-libnotify \
+           --enable-introspection
 
-OPTIONS="--disable-static \
-         --disable-tests \
-         --disable-gtk2 \
-         --disable-gtk3 \
-         --disable-xim \
-         --enable-wayland \
-         --disable-vala \
-         --disable-gtk-doc \
-         --disable-gconf \
-         --disable-setup \
-         --disable-dconf \
-         --enable-python-library \
-         --disable-ui \
-         --disable-libnotify \
-         --enable-introspection"
-
-%configure $OPTIONS
-
-# make -C po update-gmo
-make %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
-rm -f $RPM_BUILD_ROOT%{_libdir}/libibus-1.0.la
+rm -rf %{buildroot}
+make DESTDIR=%{buildroot} install
+rm -f %{buildroot}%{_libdir}/libibus-1.0.la
+
+rm -fr %{buildroot}%{_datadir}/gtk-doc
 
 %find_lang %{name}10
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 # recreate icon cache
@@ -139,7 +125,6 @@ touch --no-create %{_datadir}/icons/hicolor || :
 %{_datadir}/bash-completion/completions/ibus.bash
 %{_datadir}/man/man1/*
 
-
 %files libs
 %manifest %{name}.manifest
 %defattr(-,root,root,-)
@@ -153,7 +138,3 @@ touch --no-create %{_datadir}/icons/hicolor || :
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_datadir}/gir-1.0/IBus-1.0.gir
-
-%files devel-docs
-%defattr(-,root,root,-)
-%{_datadir}/gtk-doc/html/*
