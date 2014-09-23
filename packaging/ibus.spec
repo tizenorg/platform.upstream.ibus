@@ -8,6 +8,7 @@ URL:        http://code.google.com/p/ibus/
 Source0:    http://ibus.googlecode.com/files/%{name}-%{version}.tar.gz
 Source1001: ibus.manifest
 
+BuildRequires:  pkgconfig
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  dbus-glib-devel
@@ -20,6 +21,7 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pygobject-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  vala
+BuildRequires:  fdupes
 
 Requires:   %{name}-libs = %{version}-%{release}
 
@@ -82,6 +84,8 @@ rm -fr %{buildroot}%{_datadir}/gtk-doc
 
 %find_lang %{name}10
 
+%fdupes %{buildroot}
+
 %clean
 rm -rf %{buildroot}
 
@@ -112,7 +116,8 @@ touch --no-create %{_datadir}/icons/hicolor || :
 %files -f %{name}10.lang
 %manifest %{name}.manifest
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %dir %{python_sitelib}/ibus
 %{python_sitelib}/ibus/*
 %dir %{_datadir}/ibus/
